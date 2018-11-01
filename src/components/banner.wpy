@@ -1,0 +1,31 @@
+<style lang="less">
+    .banner {
+        
+    }
+</style>
+
+<template>
+    <view>
+        <image wx:for="{{imgList}}" wx:for-item="item" src="{{item}}"></image>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+const imgList = [
+    'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/ae51f3deb48f8c545e184c4937292df5e1fe7f89.jpg',
+    'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/b3fb43166d224f4a5ab8f47504f790529822d1b7.jpg',
+    'https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/37d3d539b6003af3ce6fb206382ac65c1138b6fb.jpg'
+]
+
+export default class Banner extends wepy.component {
+    data = {
+        imgList
+    };
+}
+</script>
+
+
+
+
