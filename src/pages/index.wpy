@@ -14,6 +14,7 @@
 .userinfo-nickname {
     color: #aaa;
 }
+
 </style>
 <template>
     <view class="container">
@@ -77,6 +78,8 @@
             <toast />
         </view>
         <view>
+            <qentry></qentry>
+            <qlist></qlist>
             <banner></banner>
         </view>
     </view>
@@ -90,6 +93,8 @@ import List from '../components/list'; // aliasFields example
 import moduleA from 'module-a'; // aliasFields ignore module example
 import Group from '../components/group';
 import Banner from '../components/banner';
+import Qentry from '../components/qentry';
+import Qlist from '../components/qlist';
 import Toast from 'wepy-com-toast';
 import testMixin from '../mixins/test';
 
@@ -110,6 +115,8 @@ export default class Index extends wepy.page {
         group: Group,
         toast: Toast,
         banner: Banner,
+        qentry: Qentry,
+        qlist: Qlist,
     };
 
     mixins = [testMixin];
