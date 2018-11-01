@@ -1,0 +1,19 @@
+<style>
+
+</style>
+
+<template>
+    <web-view url="{{url}}"></web-view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Webview extends wepy.component {
+    data = {
+        url: 'https://www.baidu.com'
+    }
+}
+</script>
+
+
