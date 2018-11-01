@@ -1,0 +1,100 @@
+<!--快速入口-->
+<style lang="less">
+    .qlist {
+        display:flex;
+        flex-wrap: wrap;
+    }
+    .qlist-line {
+        border-right: 1rpx solid #eee;
+    }
+    .qlist-line2 {
+        border-top: 1rpx solid #eee;
+        border-bottom: 1rpx solid #eee;
+    }
+    .qlist-cover {
+        width: 49%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        image {
+            width: 160rpx;
+            height: 160rpx;
+        }
+    }
+    .qlist-cover-title {
+        font-size: 36rpx;
+        display: block;
+        color: #000;
+    }
+    .qlist-cover-desc {
+        font-size: 22rpx;
+        display: block;
+        color: #000;
+        margin-top: 10rpx;
+    }
+</style>
+
+<template>
+    <view class="qlist">
+        <view wx:for="{{qlist}}" wx:for-index="index" wx:for-item="item" wx:key="index" class="qlist-cover {{ index % 2 == 0 ? 'qlist-line' : ''}}  {{ index == 2 || index == 3 ? 'qlist-line2' : ''}}"  @tab="jumpDetail(item.url)">
+            <view>
+                <text class="qlist-cover-title">{{item.name}}</text>
+                <text class="qlist-cover-desc">{{item.desc}}</text>
+            </view>
+            <image src="{{item.src}}" />
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+const qlist = [
+    {
+        name: '领券中心',
+        desc: '下单享立减',
+        src: 'https://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/9825bc315c6034a8abc1179fc613495409237689.jpg',
+    },
+    {
+        name: '领券中心',
+        desc: '下单享立减',
+        src: 'https://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/9825bc315c6034a8abc1179fc613495409237689.jpg',
+    },
+    {
+        name: '领券中心',
+        desc: '下单享立减',
+        src: 'https://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/9825bc315c6034a8abc1179fc613495409237689.jpg',
+    },
+    {
+        name: '领券中心',
+        desc: '下单享立减',
+        src: 'https://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/9825bc315c6034a8abc1179fc613495409237689.jpg',
+    },
+    {
+        name: '领券中心',
+        desc: '下单享立减',
+        src: 'https://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/9825bc315c6034a8abc1179fc613495409237689.jpg',
+    },
+    {
+        name: '领券中心',
+        desc: '下单享立减',
+        src: 'https://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/9825bc315c6034a8abc1179fc613495409237689.jpg',
+    },
+    
+]
+
+export default class Qlist extends wepy.component {
+
+    data = {
+        qlist,
+    };
+
+    methods = {
+        jumpDetail() {
+            
+        }
+    }
+}
+
+</script>
+
