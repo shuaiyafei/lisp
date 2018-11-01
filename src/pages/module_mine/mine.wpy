@@ -1,0 +1,126 @@
+<style lang="less">
+.page {
+  background-color: #f2f2f2;
+  height: 100%;
+}
+
+.container {
+  background-color: #f2f2f2;
+  height: 100%;
+}
+
+.userinfo {
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 25vh;
+  margin-top: -38px;
+}
+
+.userinfo-avatar {
+  display: block;
+  height: 17vh;
+  width: 28vw;
+  margin-left: 38%;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  display: block;
+  width: 40vw;
+  margin-left: 32%;
+  color: #333;
+  background-color: #f2f2f2;
+  border: none;
+}
+
+.userinfo-nickname::after {
+  border: none;
+}
+
+.body {
+  display: flex;
+  margin-top: 30px;
+  background-color: transparent;
+  width: 95%;
+  border-radius: 9px;
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
+  height: 100%;
+}
+</style>
+
+<template>
+
+  <view class="container">
+
+    <view class="top">
+    </view>
+
+    <view class="userinfo">
+      <image class="userinfo-avatar" src="{{head.avatar}}" background-size="cover"></image>
+      <view class="title"><text>{{head.username}}</text></view>
+    </view>
+
+    <view class="body" wx:for="{{body}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+      <view>
+        <image src="{{item.icon}}" mode="aspectFill" />
+        <text>{{item.des}}</text>
+      </view>
+    </view>
+
+  </view>
+
+</template>
+
+<script>
+import wepy from 'wepy';
+import { head, body, ad, list } from '../../localData/MinePageLocalData.js';
+export default class MinePage extends wepy.page {
+  // 自定义数据
+  customData = {};
+
+  //自定义方法
+  customFunction() {}
+
+  // 在Page和Component共用的生命周期函数
+  onLoad() {}
+
+  // 只在Page中存在的页面生命周期函数
+  onShow() {}
+
+  // 只在Page实例中存在的配置数据，对应于原生的page.json文件
+  config = {
+    navigationBarTitleText: '我的'
+  };
+
+  // 页面所需数据均需在这里声明，可用于模板数据绑定
+  data = {
+    head,
+    body,
+    ad,
+    list
+  };
+
+  // 声明页面中所引用的组件，或声明组件中所引用的子组件
+  components = {};
+
+  // 声明页面所引用的Mixin实例
+  mixins = [];
+
+  // 声明计算属性（详见后文介绍）
+  computed = {};
+
+  // 声明数据watcher（详见后文介绍）
+  watch = {};
+
+  // 声明页面wxml中标签的事件处理函数。注意，此处只用于声明页面wxml中标签的bind、catch事件，自定义方法需以自定义方法的方式声明
+  methods = {};
+
+  // 声明组件之间的事件处理函数
+  events = {
+
+  };
+}
+</script>

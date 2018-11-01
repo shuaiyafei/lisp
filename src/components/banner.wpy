@@ -47,7 +47,10 @@ export default class Banner extends wepy.component {
 
     methods = {
         jumpDetail() {
-            wx.navigateTo({url: 'counter'});
+            //wx.navigateTo({url: 'counter'});
+            wepy.navigateTo({
+                url: '/pages/module_mine/mine'
+            })
         }
     }
 }
