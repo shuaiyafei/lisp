@@ -15,7 +15,13 @@ import 'wepy-async-function';
 
 export default class extends wepy.app {
     config = {
-        pages: ['pages/index', 'pages/module_mine/mine', 'pages/usercenter'],
+        pages: [
+            'pages/index/index',
+            'pages/mine/mine',
+            'pages/webview/webview',
+            'pages/detail/detail',
+            'pages/quickentry/quickentry'
+        ],
         window: {
             backgroundTextStyle: 'light',
             navigationBarBackgroundColor: '#fff',
@@ -23,21 +29,21 @@ export default class extends wepy.app {
             navigationBarTextStyle: 'black'
         },
         tabBar: {
-            color: '#7A7E83',
+            color: '#ccc',
             selectedColor: '#fff',
-            borderStyle: 'black',
+            borderStyle: '#000',
             backgroundColor: '#599eff',
             list: [
                 {
-                    pagePath: 'pages/index',
-                    iconPath: 'image/youyong.jpg',
-                    selectedIconPath: 'image/youyong.jpg',
+                    pagePath: 'pages/index/index',
+                    iconPath: 'image/index/index.jpg',
+                    selectedIconPath: 'image/index/index.jpg',
                     text: '首页'
                 },
                 {
-                    pagePath: 'pages/usercenter',
-                    iconPath: 'image/youyong.jpg',
-                    selectedIconPath: 'image/youyong.jpg',
+                    pagePath: 'pages/mine/mine',
+                    iconPath: 'image/usercenter.png',
+                    selectedIconPath: 'image/usercenter.png',
                     text: '个人中心'
                 }
             ]

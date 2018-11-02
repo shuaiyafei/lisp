@@ -36,7 +36,7 @@
 
 <template>
     <view class="qlist">
-        <view wx:for="{{qlist}}" wx:for-index="index" wx:for-item="item" wx:key="index" class="qlist-cover {{ index % 2 == 0 ? 'qlist-line' : ''}}  {{ index == 2 || index == 3 ? 'qlist-line2' : ''}}"  @tab="jumpDetail(item.url)">
+        <view wx:for="{{qlist}}" wx:for-index="index" wx:for-item="item" wx:key="index" class="qlist-cover {{ index % 2 == 0 ? 'qlist-line' : ''}}  {{ index == 2 || index == 3 ? 'qlist-line2' : ''}}"  @tap="jumpDetail({{item.url}})">
             <view>
                 <text class="qlist-cover-title">{{item.name}}</text>
                 <text class="qlist-cover-desc">{{item.desc}}</text>
@@ -53,31 +53,37 @@ const qlist = [
     {
         name: '领券中心',
         desc: '下单享立减',
+        url: '1',
         src: 'https://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/9825bc315c6034a8abc1179fc613495409237689.jpg',
     },
     {
         name: '领券中心',
         desc: '下单享立减',
+        url: '2',
         src: 'https://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/9825bc315c6034a8abc1179fc613495409237689.jpg',
     },
     {
         name: '领券中心',
         desc: '下单享立减',
+        url: '3',
         src: 'https://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/9825bc315c6034a8abc1179fc613495409237689.jpg',
     },
     {
         name: '领券中心',
         desc: '下单享立减',
+        url: '4',
         src: 'https://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/9825bc315c6034a8abc1179fc613495409237689.jpg',
     },
     {
         name: '领券中心',
         desc: '下单享立减',
+        url: '5',
         src: 'https://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/9825bc315c6034a8abc1179fc613495409237689.jpg',
     },
     {
         name: '领券中心',
         desc: '下单享立减',
+        url: '6',
         src: 'https://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/9825bc315c6034a8abc1179fc613495409237689.jpg',
     },
     
@@ -90,8 +96,10 @@ export default class Qlist extends wepy.component {
     };
 
     methods = {
-        jumpDetail() {
-            
+        jumpDetail(para) {
+            wepy.navigateTo({
+                url: `/pages/detail/detail?classifyId=${para}`
+            })
         }
     }
 }

@@ -1,28 +1,27 @@
 <!--快速入口-->
 <style lang="less">
-    .quickentry {
-        display:flex;
-        align-items:center;
-        justify-content:space-around;
-        background: url(https://gss0.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/nuomi/pic/item/503d269759ee3d6d3aa4091849166d224e4ade87.jpg);
-        background-size: cover;
-        height: 350rpx;
-        flex-wrap: wrap;
+.quickentry {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: url(https://gss0.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/nuomi/pic/item/503d269759ee3d6d3aa4091849166d224e4ade87.jpg);
+    background-size: cover;
+    height: 350rpx;
+    flex-wrap: wrap;
+}
+.quickentry-cover {
+    width: 150rpx;
+    image {
+        width: 90rpx;
+        height: 90rpx;
+        margin-left: 30rpx;
     }
-    .quickentry-cover {
-        width: 150rpx;
-        image {
-            width: 90rpx;
-            height: 90rpx;
-            margin-left: 30rpx;
-        }
-    }
-    
+}
 </style>
 
 <template>
     <view class="quickentry">
-        <view class="quickentry-cover" wx:for="{{iconList}}" wx:for-index="index" wx:for-item="item" wx:key="index" @tab="jumpEntry(item.url)">
+        <view class="quickentry-cover" wx:for="{{iconList}}" wx:for-index="index" wx:for-item="item" wx:key="index" @tap="jumpEntry({{item.url}})">
             <image src="{{item.src}}" />
         </view>
     </view>
@@ -33,61 +32,70 @@ import wepy from 'wepy';
 
 const iconList = [
     {
-        src: 'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/72f082025aafa40f41262056a764034f79f0195c.jpg',
+        src:
+            'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/72f082025aafa40f41262056a764034f79f0195c.jpg',
         url: '1'
     },
     {
-        src: 'https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/aec379310a55b31907e7b4f94fa98226cffc171b.jpg',
+        src:
+            'https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/aec379310a55b31907e7b4f94fa98226cffc171b.jpg',
         url: '2'
     },
     {
-        src: 'https://ss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/79f0f736afc37931ab02ffa7e7c4b74542a911d1.jpg',
+        src:
+            'https://ss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/79f0f736afc37931ab02ffa7e7c4b74542a911d1.jpg',
         url: '3'
     },
     {
-        src: 'https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/b21c8701a18b87d69b4bd3910b0828381f30fd37.jpg',
+        src:
+            'https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/b21c8701a18b87d69b4bd3910b0828381f30fd37.jpg',
         url: '4'
     },
     {
-        src: 'https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/c83d70cf3bc79f3db630b6beb6a1cd11738b296e.jpg',
+        src:
+            'https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/c83d70cf3bc79f3db630b6beb6a1cd11738b296e.jpg',
         url: '5'
     },
-    
 
     {
-        src: 'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/72f082025aafa40f41262056a764034f79f0195c.jpg',
+        src:
+            'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/72f082025aafa40f41262056a764034f79f0195c.jpg',
         url: '1'
     },
     {
-        src: 'https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/aec379310a55b31907e7b4f94fa98226cffc171b.jpg',
+        src:
+            'https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/aec379310a55b31907e7b4f94fa98226cffc171b.jpg',
         url: '2'
     },
     {
-        src: 'https://ss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/79f0f736afc37931ab02ffa7e7c4b74542a911d1.jpg',
+        src:
+            'https://ss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/79f0f736afc37931ab02ffa7e7c4b74542a911d1.jpg',
         url: '3'
     },
     {
-        src: 'https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/b21c8701a18b87d69b4bd3910b0828381f30fd37.jpg',
+        src:
+            'https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/b21c8701a18b87d69b4bd3910b0828381f30fd37.jpg',
         url: '4'
     },
     {
-        src: 'https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/c83d70cf3bc79f3db630b6beb6a1cd11738b296e.jpg',
+        src:
+            'https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/c83d70cf3bc79f3db630b6beb6a1cd11738b296e.jpg',
         url: '5'
-    },
-]
+    }
+];
 
 export default class Qentry extends wepy.component {
-
     data = {
-        iconList,
+        iconList
     };
 
     methods = {
-        jumpEntry() {
-            
+        jumpEntry(para) {
+            wepy.navigateTo({
+                url: `/pages/quickentry/quickentry?group=${para}`
+            });
         }
-    }
+    };
 }
-
 </script>
 
