@@ -1,40 +1,47 @@
 exports.header = {
   username: "李白",
-  avatar: "https://avatars3.githubusercontent.com/u/16618929?s=88&v=4"
+  avatar: "../../image/mine/avatar.jpg"
 };
 
 exports.body = [
 
   {
-    icon: "",
-    des: "订单"
+    icon: "../../image/mine/mine_order.png",
+    des: "我的订单"
   },
   {
-    icon: "",
-    des: "历史记录"
+    icon: "../../image/mine/mine_like.png",
+    des: "我的收藏"
   },
   {
-    icon: "",
-    des: "推荐"
+    icon: "../../image/mine/mine_recommend.png",
+    des: "产品推荐"
   }
 
 ];
 
 
 exports.ad = {
-  url: ""
+  url: "http://images3.c-ctrip.com/hotel/2018/09/0919_gz_pc_780x180.jpg"
 }
 
 exports.list = [
 
   {
-    title: "常见问题"
+    info: "常见问题",
+    right:"../../image/common/icon_arrow_list.png"
   },
   {
-    title: "平台规则"
+    info: "平台规则",
+    right:"../../image/common/icon_arrow_list.png"
   },
   {
-    title: "联系客服"
+    info: "联系客服",
+    right:"../../image/common/icon_arrow_list.png"
+  },
+  {
+    info: "设置",
+    right:""
   }
 
 ];

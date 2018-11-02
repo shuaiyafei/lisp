@@ -1,53 +1,103 @@
 <style lang="less">
 .page {
-  background-color: #f2f2f2;
+  background-color: white;
   height: 100%;
 }
 
 .container {
-  background-color: #f2f2f2;
+  background-color: white;
   height: 100%;
 }
 
 .userinfo {
-  display: block;
+  display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
-  height: 25vh;
-  margin-top: -38px;
+  height: 300rpx;
+  .avatar {
+    align-self: center;
+    background-size: auto;
+    background-repeat: no-repeat;
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+  }
+  .username {
+    margin-top: 6rpx;
+    align-self: center;
+    font-size: 14px;
+    color: #333;
+    background-color: #f2f2f2;
+    border: none;
+  }
 }
 
-.userinfo-avatar {
-  display: block;
-  height: 17vh;
-  width: 28vw;
-  margin-left: 38%;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  display: block;
-  width: 40vw;
-  margin-left: 32%;
-  color: #333;
-  background-color: #f2f2f2;
-  border: none;
-}
-
-.userinfo-nickname::after {
+.userinfo- .username::after {
   border: none;
 }
 
 .body {
+  width: 100%;
+  height: 120rpx;
   display: flex;
-  margin-top: 30px;
-  background-color: transparent;
-  width: 95%;
-  border-radius: 9px;
-  background-color: #ffffff;
-  border: 1px solid #ffffff;
-  height: 100%;
+  flex-direction: row;
+  align-items: center;
+}
+
+.body-item {
+  flex: 1;
+  width: 100rpx;
+  height: 100rpx;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  image {
+    width: 48rpx;
+    height: 48rpx;
+    background-size: auto;
+    background-repeat: no-repeat;
+  }
+  text {
+    margin-top: 4rpx;
+    font-size: 12px;
+  }
+}
+
+.ad {
+  background-color: #f2f2f2;
+  padding-top: 12rpx;
+  padding-bottom: 12rpx;
+  width: 100%;
+  height: 170rpx;
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+
+.list {
+  width: 100%;
+  .list-item {
+    display: flex;
+    width: 100%;
+    height: 90rpx;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #dadada;
+    text {
+      padding: 15px;
+      width: 80%;
+      font-size: 12px;
+    }
+    image {
+      margin: 15rpx;
+      width: 36rpx;
+      height: 36rpx;
+      background-repeat: no-repeat;
+      background-size: auto;
+    }
+  }
 }
 </style>
 
@@ -55,19 +105,27 @@
 
   <view class="container">
 
-    <view class="top">
-    </view>
-
     <view class="userinfo">
-      <image class="userinfo-avatar" src="{{head.avatar}}" background-size="cover"></image>
-      <view class="title"><text>{{head.username}}</text></view>
+      <image class="avatar" src="{{header.avatar}}"></image>
+      <text class="username">{{header.username}}</text>
     </view>
 
-    <view class="body" wx:for="{{body}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-      <view>
-        <image src="{{item.icon}}" mode="aspectFill" />
+    <view class="body">
+      <view class="body-item" wx:for="{{body}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+        <image src="{{item.icon}}" />
         <text>{{item.des}}</text>
       </view>
+    </view>
+
+    <image class="ad" src="{{ad.url}}"></image>
+
+    <view class="list" wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+
+      <view class="list-item">
+        <text>{{item.info}}</text>
+        <image src="{{item.right}}"></image>
+      </view>
+
     </view>
 
   </view>
@@ -76,7 +134,7 @@
 
 <script>
 import wepy from 'wepy';
-import { head, body, ad, list } from '../../localData/MinePageLocalData.js';
+import { header, body, ad, list } from '../../localData/MinePageLocalData.js';
 export default class MinePage extends wepy.page {
   // 自定义数据
   customData = {};
@@ -97,7 +155,7 @@ export default class MinePage extends wepy.page {
 
   // 页面所需数据均需在这里声明，可用于模板数据绑定
   data = {
-    head,
+    header,
     body,
     ad,
     list
@@ -119,8 +177,6 @@ export default class MinePage extends wepy.page {
   methods = {};
 
   // 声明组件之间的事件处理函数
-  events = {
-
-  };
+  events = {};
 }
 </script>
