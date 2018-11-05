@@ -7,6 +7,23 @@
     justify-content: space-between;
     box-sizing: border-box;
 }
+
+@font-face {
+  font-family: 'iconfont';  /* project id 904044 */
+  src: url('//at.alicdn.com/t/font_904044_3b0cdrnxxcw.eot');
+  src: url('//at.alicdn.com/t/font_904044_3b0cdrnxxcw.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_904044_3b0cdrnxxcw.woff') format('woff'),
+  url('//at.alicdn.com/t/font_904044_3b0cdrnxxcw.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_904044_3b0cdrnxxcw.svg#iconfont') format('svg');
+}
+
+.iconfont {
+    font-style: normal;
+    font-size: 16px;
+    font-family: 'iconfont' !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 </style>
 
 <script>
