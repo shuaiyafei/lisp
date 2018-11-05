@@ -4,26 +4,29 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    // background: url(https://gss0.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/nuomi/pic/item/503d269759ee3d6d3aa4091849166d224e4ade87.jpg);
+    background: url(http://pic.616pic.com/bg_w1180/00/18/97/AEmvEQXWtV.jpg!/fw/1120);
     background-size: cover;
     height: 350rpx;
     flex-wrap: wrap;
 }
 .quickentry-cover {
     width: 150rpx;
-    image {
-        width: 90rpx;
-        height: 90rpx;
-        margin-left: 30rpx;
+    display: flex;
+    justify-content: center;
+    icon {
+        font-size: 30px;
+        background: #fff;
+        border-radius: 100px;
+        padding: 5px 6px;
+        color: #666;
     }
 }
 </style>
 
 <template>
     <view class="quickentry">
-        <view class="quickentry-cover" wx:for="{{iconList}}" wx:for-index="index" wx:for-item="item" wx:key="index" @tap="jumpEntry({{item.url}})">
-            <image src="{{item.src}}" />
-            <icon class="iconfont">{{item.content}}</icon>
+        <view class="quickentry-cover" wx:for="{{entryList}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+            <icon class="iconfont"  @tap="jumpEntry({{item.url}})">{{item.src}}</icon>
         </view>
     </view>
 </template>
@@ -31,16 +34,51 @@
 <script>
 import wepy from 'wepy';
 
-const iconList = [
+const entryList = [
     {
-        content: '&#xe67b;',
-        url: 1,
+        src: '\ue67c',
+        url: '1'
+    },
+    {
+        src: '\ue646',
+        url: '1'
+    },
+    {
+        src: '\ue647',
+        url: '1'
+    },
+    {
+        src: '\ue603',
+        url: '1'
+    },
+    {
+        src: '\ue60c',
+        url: '1'
+    },
+    {
+        src: '\ue657',
+        url: '1'
+    },
+    {
+        src: '\ue8a2',
+        url: '1'
+    },
+    {
+        src: '\ue604',
+        url: '1'
+    },
+    {
+        src: '\ue61f',
+        url: '1'
+    },
+    {
+        src: '\ue65a',
+        url: '1'
     }
 ];
-
 export default class Qentry extends wepy.component {
     data = {
-        iconList
+        entryList
     };
 
     methods = {

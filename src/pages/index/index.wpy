@@ -81,6 +81,7 @@
             <news></news>
             <qlist></qlist>
             <banner></banner>
+            <recommend></recommend>
         </view>
     </view>
 </template>
@@ -96,6 +97,7 @@ import Banner from '@/components/banner';
 import Qentry from '@/components/qentry';
 import Qlist from '@/components/qlist';
 import News from '@/components/news';
+import Recommend from '@/components/recommend';
 import Toast from 'wepy-com-toast';
 import testMixin from '@/mixins/test';
 
@@ -119,6 +121,7 @@ export default class Index extends wepy.page {
         qentry: Qentry,
         qlist: Qlist,
         news: News,
+        recommend: Recommend,
     };
 
     mixins = [testMixin];

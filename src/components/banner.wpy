@@ -2,8 +2,20 @@
 <style lang="less">
 .banner {
     width: 100%;
+    height: 175px;
+    padding: 10px 0;
+    background: #f0f4f5;
+}
+.banner-contain {
+    width: 100%;
+    height: 100%;
+    background: #fff;
 }
 .banner-cover {
+    width: 90%;
+    height: 90%;
+    padding-top:2.5%;
+    padding-left:5%;
     image {
         width: 100%;
         height: 100%;
@@ -13,13 +25,15 @@
 
 <template>
     <view class="banner">
-        <swiper indicator-dots="{{swiper.dots}}" indicator-color="{{swiper.color}}" indicator-active-color="{{swiper.activeColor}}" autoplay="{{swiper.autoplay}}" interval="{{swiper.interval}}" class="banner-cover">
-            <block wx:for="{{swiper.imgList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-                <swiper-item @tap="jumpDetail({{item.url}})">
-                    <image src="{{item.src}}" />
-                </swiper-item>
-            </block>
-        </swiper>
+        <view class="banner-contain">
+            <swiper indicator-dots="{{swiper.dots}}" indicator-color="{{swiper.color}}" indicator-active-color="{{swiper.activeColor}}" autoplay="{{swiper.autoplay}}" interval="{{swiper.interval}}" circular={{swiper.circular}} class="banner-cover">
+                <block wx:for="{{swiper.imgList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+                    <swiper-item @tap="jumpDetail({{item.url}})">
+                        <image src="{{item.src}}" />
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
     </view>
 </template>
 
@@ -28,15 +42,18 @@ import wepy from 'wepy';
 
 const imgList = [
     {
-        src: 'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/ae51f3deb48f8c545e184c4937292df5e1fe7f89.jpg',
+        src:
+            'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/ae51f3deb48f8c545e184c4937292df5e1fe7f89.jpg',
         url: '1'
     },
     {
-        src: 'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/b3fb43166d224f4a5ab8f47504f790529822d1b7.jpg',
+        src:
+            'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/b3fb43166d224f4a5ab8f47504f790529822d1b7.jpg',
         url: '2'
     },
     {
-        src: 'https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/37d3d539b6003af3ce6fb206382ac65c1138b6fb.jpg',
+        src:
+            'https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/37d3d539b6003af3ce6fb206382ac65c1138b6fb.jpg',
         url: '3'
     }
 ];
@@ -45,11 +62,12 @@ export default class Banner extends wepy.component {
     data = {
         swiper: {
             imgList,
-            dots: 'true',
+            dots: true,
             color: 'rgba(255, 255, 255, .5)',
             activeColor: '#fff',
-            autoplay: 'true',
-            interval: '2000'
+            autoplay: true,
+            interval: '2000',
+            circular: true
         }
     };
 
