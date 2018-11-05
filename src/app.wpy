@@ -42,8 +42,8 @@ export default class extends wepy.app {
                 },
                 {
                     pagePath: 'pages/mine/mine',
-                    iconPath: 'image/usercenter.png',
-                    selectedIconPath: 'image/usercenter.png',
+                    iconPath: 'image/index/usercenter.png',
+                    selectedIconPath: 'image/index/usercenter.png',
                     text: '个人中心'
                 }
             ]
