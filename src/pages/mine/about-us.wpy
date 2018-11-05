@@ -1,0 +1,41 @@
+<style lang="less">
+
+</style>
+
+<template>
+
+</template>
+
+<script>
+import wepy from 'wepy';
+export default class AboutUsPage extends wepy.page {
+  
+  customData = {};
+
+  customFunction() {}
+
+  onLoad() {}
+
+  onShow() {}
+
+  config = {
+    navigationBarTitleText: '关于我们'
+  };
+
+  data = {
+    
+  };
+
+  components = {};
+
+  mixins = [];
+
+  computed = {};
+
+  watch = {};
+
+  methods = {};
+
+  events = {};
+}
+</script>
