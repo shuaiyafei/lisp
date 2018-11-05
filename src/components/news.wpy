@@ -12,8 +12,8 @@ swiper-item {
     justify-content: space-around;
     align-items: center;
     image {
-        max-width: 80px;
-        max-height: 80px;
+        max-width: 60px;
+        max-height: 60px;
     }
 }
 .news-cover {
@@ -55,25 +55,25 @@ import wepy from 'wepy';
 
 const newsList = [
     {
-        src: 'https://gss0.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/lbs/pic/item/71cf3bc79f3df8dc5680948bc011728b4710286e.jpg',
+        src: 'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/lbs/pic/item/a71ea8d3fd1f4134ed141d64281f95cad1c85e8c.jpg',
         title: '头条',
         desc: '一秒萌炸少女心！这些火爆小红书的网红小可爱，我只想看不想吃！！',
         viewNum: '7000'
     },
     {
-        src: 'https://gss0.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/lbs/pic/item/71cf3bc79f3df8dc5680948bc011728b4710286e.jpg',
+        src: 'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/lbs/pic/item/a71ea8d3fd1f4134ed141d64281f95cad1c85e8c.jpg',
         title: '头条',
         desc: '一秒萌炸少女心！这些火爆小红书的网红小可爱，我只想看不想吃！！',
         viewNum: '7000'
     },
     {
-        src: 'https://gss0.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/lbs/pic/item/71cf3bc79f3df8dc5680948bc011728b4710286e.jpg',
+        src: 'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/lbs/pic/item/a71ea8d3fd1f4134ed141d64281f95cad1c85e8c.jpg',
         title: '头条',
         desc: '一秒萌炸少女心！这些火爆小红书的网红小可爱，我只想看不想吃！！',
         viewNum: '7000'
     },
     {
-        src: 'https://gss0.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/lbs/pic/item/71cf3bc79f3df8dc5680948bc011728b4710286e.jpg',
+        src: 'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/lbs/pic/item/a71ea8d3fd1f4134ed141d64281f95cad1c85e8c.jpg',
         title: '头条',
         desc: '一秒萌炸少女心！这些火爆小红书的网红小可爱，我只想看不想吃！！',
         viewNum: '7000'
@@ -84,7 +84,7 @@ export default class News extends wepy.component {
     data = {
         newsList,
         swiper: {
-            autoplay: false,
+            autoplay: true,
             interval: 3000,
             circular: true,
             vertical: true
