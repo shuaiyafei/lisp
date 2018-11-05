@@ -43,5 +43,10 @@ exports.list = [
     info: "设置",
     right:""
   }
+  ,
+  {
+    info: "关于我们 ：https://github.com/shuaiyafei/lisp",
+    right:""
+  }
 
 ];

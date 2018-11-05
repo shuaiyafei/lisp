@@ -121,7 +121,7 @@
 
     <view class="list" wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="index">
 
-      <view class="list-item">
+      <view class="list-item" >
         <text>{{item.info}}</text>
         <image src="{{item.right}}"></image>
       </view>
