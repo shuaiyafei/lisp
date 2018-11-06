@@ -45,7 +45,7 @@ export default class Banner extends wepy.component {
     bannerList: {
       type: Array,
       default: [],
-      twoWay: true
+      //twoWay: true
     }
   };
 
