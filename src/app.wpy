@@ -47,13 +47,13 @@ export default class extends wepy.app {
             list: [
                 {
                     pagePath: 'pages/index/index',
-                    iconPath: 'image/index/index.jpg',
-                    selectedIconPath: 'image/index/index.jpg',
+                    iconPath: 'image/index/index-select.png',
+                    selectedIconPath: 'image/index/index.png',
                     text: '首页'
                 },
                 {
                     pagePath: 'pages/mine/mine',
-                    iconPath: 'image/index/usercenter.png',
+                    iconPath: 'image/index/usercenter-select.png',
                     selectedIconPath: 'image/index/usercenter.png',
                     text: '个人中心'
                 }
