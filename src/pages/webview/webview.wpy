@@ -2,7 +2,7 @@
 </style>
 
 <template>
-    <web-view url="{{url}}"></web-view>
+  <web-view url="{{url}}"></web-view>
 </template>
 
 <script>
@@ -12,16 +12,19 @@ export default class Webview extends wepy.page {
 
   onLoad(options) {
     console.log(options);
-    var link = options.link;
-    this.setData{
-        this.url = link;
-    }
+
+    this.url = options.link;
+    this.config.navigationBarTitleText = options.title;
+    
   }
+
+  config = {
+    navigationBarTitleText: 'web-view'
+  };
 
   data = {
     url: 'https://www.baidu.com'
   };
-
 }
 </script>
 
