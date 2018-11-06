@@ -13,7 +13,9 @@ export default class Webview extends wepy.page {
   onLoad(options) {
     console.log(options);
     var link = options.link;
-    this.url = link;
+    this.setData{
+        this.url = link;
+    }
   }
 
   data = {
