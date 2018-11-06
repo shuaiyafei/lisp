@@ -68,55 +68,11 @@ swiper {
 </template>
 <script>
 import wepy from 'wepy';
-
-const newsList = [
-    {
-        src:
-            'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/lbs/pic/item/a71ea8d3fd1f4134ed141d64281f95cad1c85e8c.jpg',
-        title: '头条',
-        desc: '一秒萌炸少女心！这些火爆小红书的网红小可爱，我只想看不想吃！！',
-        viewNum: '7000'
-    },
-    {
-        src:
-            'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/lbs/pic/item/a71ea8d3fd1f4134ed141d64281f95cad1c85e8c.jpg',
-        title: '头条',
-        desc: '一秒萌炸少女心！这些火爆小红书的网红小可爱，我只想看不想吃！！',
-        viewNum: '7000'
-    },
-    {
-        src:
-            'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/lbs/pic/item/a71ea8d3fd1f4134ed141d64281f95cad1c85e8c.jpg',
-        title: '头条',
-        desc: '一秒萌炸少女心！这些火爆小红书的网红小可爱，我只想看不想吃！！',
-        viewNum: '7000'
-    },
-    {
-        src:
-            'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/lbs/pic/item/a71ea8d3fd1f4134ed141d64281f95cad1c85e8c.jpg',
-        title: '头条',
-        desc: '一秒萌炸少女心！这些火爆小红书的网红小可爱，我只想看不想吃！！',
-        viewNum: '7000'
-    },
-    {
-        src:
-            'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/lbs/pic/item/a71ea8d3fd1f4134ed141d64281f95cad1c85e8c.jpg',
-        title: '头条',
-        desc: '一秒萌炸少女心！这些火爆小红书的网红小可爱，我只想看不想吃！！',
-        viewNum: '7000'
-    },
-    {
-        src:
-            'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/lbs/pic/item/a71ea8d3fd1f4134ed141d64281f95cad1c85e8c.jpg',
-        title: '头条',
-        desc: '一秒萌炸少女心！这些火爆小红书的网红小可爱，我只想看不想吃！！',
-        viewNum: '7000'
-    }
-];
+import ajax from '../common/js/util';
 
 export default class News extends wepy.component {
     data = {
-        newsList,
+        newsList: '',
         swiper: {
             autoplay: true,
             interval: 3000,
@@ -132,5 +88,14 @@ export default class News extends wepy.component {
             });
         }
     };
+
+    async loadNewsess() {
+        this.newsList = await ajax('getNewsEss');
+        this.$apply();
+    }
+    
+    onLoad() {
+        this.loadNewsess();
+    }
 }
 </script>
