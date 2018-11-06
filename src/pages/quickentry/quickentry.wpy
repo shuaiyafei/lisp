@@ -1,0 +1,44 @@
+<style>
+    .q-contain {
+
+    }
+    .q-header {
+        background: url(https://goss2.veer.com/creative/vcg/veer/612/veer-159748963.jpg);
+        background-size: cover;
+        height: 175px;
+    }
+    .q-title {
+        font-size: 24px;
+        color: #fff;
+        line-height: 40px;
+        text-align: center;
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+    }
+</style>
+
+<template>
+    <view class="q-contain">
+        <view class="q-header">
+            <block>
+                <text class="q-title">美食</text>
+            </block>
+            <view>蛋糕</view>
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class Quickentry extends wepy.page {
+    data = {
+
+    }
+    
+    methods = {
+        
+    }
+}
+</script>

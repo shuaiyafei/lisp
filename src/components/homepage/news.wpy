@@ -68,11 +68,15 @@ swiper {
 </template>
 <script>
 import wepy from 'wepy';
-import ajax from '../common/js/util';
 
 export default class News extends wepy.component {
+    props = {
+        newsList: {
+            type: Array,
+            default: []
+        }
+    }
     data = {
-        newsList: '',
         swiper: {
             autoplay: true,
             interval: 3000,
@@ -88,14 +92,5 @@ export default class News extends wepy.component {
             });
         }
     };
-
-    async loadNewsess() {
-        this.newsList = await ajax('getNewsEss');
-        this.$apply();
-    }
-    
-    onLoad() {
-        this.loadNewsess();
-    }
 }
 </script>

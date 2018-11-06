@@ -27,7 +27,7 @@
     <view class="banner">
         <view class="banner-contain">
             <swiper indicator-dots="{{swiper.dots}}" indicator-color="{{swiper.color}}" indicator-active-color="{{swiper.activeColor}}" autoplay="{{swiper.autoplay}}" interval="{{swiper.interval}}" circular={{swiper.circular}} class="banner-cover">
-                <block wx:for="{{getList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+                <block wx:for="{{bannerList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
                     <swiper-item @tap="jumpDetail({{item.url}})">
                         <image src="{{item.src}}" />
                     </swiper-item>
@@ -65,12 +65,6 @@ export default class Banner extends wepy.component {
       wepy.navigateTo({
         url: `/pages/detail/detail?classifyId=${para}`
       });
-    }
-  };
-
-  computed = {
-    getList() {
-      return this.bannerList;
     }
   };
 }

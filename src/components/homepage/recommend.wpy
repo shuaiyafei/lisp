@@ -1,0 +1,110 @@
+<!-- 推荐 -->
+<style lang="less">
+.recommend {
+    
+}
+.recommend-contain {
+    padding: 0 20px;
+}
+.recommend-title {
+    font-size: 18px;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 5px 0;
+    text-align: center;
+    icon {
+        font-size: 24px;
+    }
+}
+.recommend-cover {
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.recomend-name {
+    font-size: 18px;
+    color: #333;
+}
+.recomend-content {
+    display: flex;
+    justify-content: space-between;
+}
+.recomend-location {
+    font-size: 12px;
+    color: #999;
+    line-height: 26px;
+}
+.recomend-price::before {
+    content: '¥';
+    font-size: 12px;
+    display: inline-block;
+}
+.recomend-price::after {
+     content: '/人';
+    font-size: 12px;
+    display: inline-block;
+}
+.recomend-overview {
+    display: flex;
+    image {
+        height: 80px;
+    }
+}
+.recomend-overview-val {
+    margin: 0 10px;
+}
+.recomend-judge {
+    font-size: 12px;
+    color: #bf974d;
+}
+</style>
+
+<template>
+    <view class="recommend">
+        <view class="recommend-contain">
+            <view class="recommend-title">
+                <icon class="iconfont">&#xe636;</icon><text>猜你喜欢</text>
+            </view>
+            <view wx:for="{{recommendList}}" wx:for-index="index" wx:for-item="item" wx:key="index" class="recommend-cover">
+                <view>
+                    <block>
+                        <text class="recomend-name">{{item.name}}</text>
+                    </block>
+                    <view class="recomend-content">
+                        <text class="recomend-location">{{item.location}} {{item.distance}}</text>
+                        <text class="recomend-price">{{item.price}}</text>
+                    </view>
+                </view>
+                <view class="recomend-overview">
+                    <image src="{{item.bgurl[0]}}" />
+                    <image class="recomend-overview-val " src="{{item.bgurl[1]}}" />
+                    <image src="{{item.bgurl[2]}}" />
+                </view>
+                <text class="recomend-judge">{{item.desc}}</text>
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class Recommend extends wepy.component {
+    props = {
+        recommendList: {
+            type: Array,
+            default: []
+        }
+    }
+
+    data = {
+
+    };
+    
+    methods = {
+
+    };
+}
+</script>
+
+
+
+

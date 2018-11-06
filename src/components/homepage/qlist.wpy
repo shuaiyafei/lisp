@@ -36,7 +36,7 @@
 
 <template>
     <view class="qlist">
-        <view wx:for="{{qlist}}" wx:for-index="index" wx:for-item="item" wx:key="index" class="qlist-cover {{ index % 2 == 0 ? 'qlist-line' : ''}}  {{ index == 2 || index == 3 ? 'qlist-line2' : ''}}"  @tap="jumpDetail({{item.url}})">
+        <view wx:for="{{quickList}}" wx:for-index="index" wx:for-item="item" wx:key="index" class="qlist-cover {{ index % 2 == 0 ? 'qlist-line' : ''}}  {{ index == 2 || index == 3 ? 'qlist-line2' : ''}}"  @tap="jumpDetail({{item.url}})">
             <view>
                 <text class="qlist-cover-title">{{item.name}}</text>
                 <text class="qlist-cover-desc">{{item.desc}}</text>
@@ -48,12 +48,17 @@
 
 <script>
 import wepy from 'wepy';
-import ajax from '../common/js/util';
 
 export default class Qlist extends wepy.component {
+    props = {
+        quickList: {
+            type: Array,
+            default: []
+        }
+    }
 
     data = {
-        qlist: '',
+        
     };
 
     methods = {
@@ -62,15 +67,6 @@ export default class Qlist extends wepy.component {
                 url: `/pages/detail/detail?classifyId=${para}`
             })
         }
-    }
-
-    async loadQuicklist() {
-        this.qlist = await ajax('getQuicklist');
-        this.$apply();
-    }
-    
-    onLoad() {
-        this.loadQuicklist();
     }
 }
 

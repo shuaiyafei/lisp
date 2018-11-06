@@ -3,11 +3,11 @@
 <template>
     <view class="container">
         <view>
-            <qentry></qentry>
-            <news></news>
-            <qlist></qlist>
+            <qentry :quickEntry.sync="quickEntry"></qentry>
+            <news :newsList.sync="newsList"></news>
+            <qlist :quickList.sync="quickList"></qlist>
             <banner :bannerList.sync="bannerList"></banner>
-            <recommend></recommend>
+            <recommend :recommendList.sync="recommendList"></recommend>
         </view>
     </view>
 </template>
@@ -15,12 +15,11 @@
 <script>
 import ajax from '@/common/js/util';
 import wepy from 'wepy';
-import Group from '@/components/group';
-import Banner from '@/components/banner';
-import Qentry from '@/components/qentry';
-import Qlist from '@/components/qlist';
-import News from '@/components/news';
-import Recommend from '@/components/recommend';
+import Banner from '@/components/homepage/banner';
+import Qentry from '@/components/homepage/qentry';
+import Qlist from '@/components/homepage/qlist';
+import News from '@/components/homepage/news';
+import Recommend from '@/components/homepage/recommend';
 import Toast from 'wepy-com-toast';
 import testMixin from '@/mixins/test';
 
@@ -32,7 +31,6 @@ export default class Index extends wepy.page {
     navigationBarTextStyle: '#fff'
   };
   components = {
-    group: Group,
     toast: Toast,
     banner: Banner,
     qentry: Qentry,
@@ -44,19 +42,23 @@ export default class Index extends wepy.page {
   mixins = [testMixin];
 
   data = {
-    homePageData: {},
-    bannerList: []
+    quickEntry: [],
+    bannerList: [],
+    newsList: [],
+    quickList: [],
+    recommendList: []
   };
 
 
   methods = {};
 
   async loadHomepage() {
-    this.homePageData = await ajax('getHomepageInfo');
-    this.bannerList = this.homePageData.bannerList;
-    // console.log(this.bannerList);
-    // console.log(222222222222);
-    // console.log(this.homePageData);
+    const homePageData = await ajax('getHomepageInfo');
+    this.quickEntry = homePageData.quickEntry;
+    this.newsList = homePageData.newsList;
+    this.quickList = homePageData.quickList;
+    this.bannerList = homePageData.bannerList;
+    this.recommendList = homePageData.recommendList;
     this.$apply();
   }
   onLoad() {

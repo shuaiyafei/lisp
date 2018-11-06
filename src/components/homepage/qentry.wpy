@@ -24,7 +24,7 @@
 
 <template>
     <view class="quickentry">
-        <view class="quickentry-cover" wx:for="{{entryList}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+        <view class="quickentry-cover" wx:for="{{quickEntry}}" wx:for-index="index" wx:for-item="item" wx:key="index">
             <icon class="iconfont"  @tap="jumpEntry({{item.url}})" style="background:{{item.color}}">{{item.src}}</icon>
             <text>{{item.test}}</text>
         </view>
@@ -33,13 +33,17 @@
 
 <script>
 import wepy from 'wepy';
-import ajax from '../common/js/util';
-
 
 export default class Qentry extends wepy.component {
-    
+    props = {
+        quickEntry: {
+            type: Array,
+            default: []
+        }
+    }
+
     data = {
-        entryList: ''
+        
     };
 
     methods = {
@@ -49,15 +53,6 @@ export default class Qentry extends wepy.component {
             });
         }
     };
-
-    async loadQuickentry() {
-        this.entryList = await ajax('getQuickentry');
-        this.$apply();
-    }
-
-    onLoad() {
-        this.loadQuickentry();
-    }
 }
 </script>
 

@@ -1,9 +1,21 @@
+<style>
+
+</style>
+
 <template>
     
 </template>
 
 <script>
-export default {
+import wepy from 'wepy';
+
+export default class Newslist extends wepy.page {
+    data = {
+
+    }
     
+    methods = {
+        
+    }
 }
 </script>
