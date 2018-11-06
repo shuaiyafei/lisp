@@ -87,6 +87,7 @@
 </template>
 
 <script>
+import ajax from '@/common/js/util';
 import wepy from 'wepy';
 import Panel from '@/components/panel'; // alias example
 import Counter from 'counter'; // alias example
@@ -182,7 +183,9 @@ export default class Index extends wepy.page {
                     }
                 ]
             }
-        ]
+        ],
+        // 首页数据
+        homePageData: '',
     };
 
     computed = {
@@ -267,7 +270,14 @@ export default class Index extends wepy.page {
         }
     };
 
+    async loadHomepage() {
+        this.homePageData = await ajax('getHomepageInfo');
+        this.$apply();
+    }
     onLoad() {
+        this.loadHomepage();
+
+
         let self = this;
         this.$parent.getUserInfo(function(userInfo) {
             if (userInfo) {

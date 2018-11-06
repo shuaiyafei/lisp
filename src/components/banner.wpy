@@ -27,7 +27,7 @@
     <view class="banner">
         <view class="banner-contain">
             <swiper indicator-dots="{{swiper.dots}}" indicator-color="{{swiper.color}}" indicator-active-color="{{swiper.activeColor}}" autoplay="{{swiper.autoplay}}" interval="{{swiper.interval}}" circular={{swiper.circular}} class="banner-cover">
-                <block wx:for="{{swiper.imgList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+                <block wx:for="{{swiper.bannerList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
                     <swiper-item @tap="jumpDetail({{item.url}})">
                         <image src="{{item.src}}" />
                     </swiper-item>
@@ -40,7 +40,7 @@
 <script>
 import wepy from 'wepy';
 
-const imgList = [
+const bannerList = [
     {
         src:
             'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/ae51f3deb48f8c545e184c4937292df5e1fe7f89.jpg',
@@ -58,10 +58,12 @@ const imgList = [
     }
 ];
 
+console.log(JSON.stringify(bannerList));
+
 export default class Banner extends wepy.component {
     data = {
         swiper: {
-            imgList,
+            bannerList,
             dots: true,
             color: 'rgba(255, 255, 255, .5)',
             activeColor: '#fff',
