@@ -183,8 +183,9 @@ export default class MinePage extends wepy.page {
 
     toAboutUsPage() {
       var link = list[4].extra;
+      var title = list[4].info;
       wepy.navigateTo({
-        url: `../../pages/webview/webview?link=${link}`
+        url: `../../pages/webview/webview?link=${link}&title=${title}`
       });
     }
   };
