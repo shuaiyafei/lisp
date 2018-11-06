@@ -11,11 +11,15 @@ import wepy from 'wepy';
 export default class Webview extends wepy.page {
 
   onLoad(options) {
+    var that = this;
     console.log(options);
+    that.setData({
+      url: options.link
+    })
+    wx.setNavigationBarTitle({
+      title: options.title
+    })
 
-    this.url = options.link;
-    this.config.navigationBarTitleText = options.title;
-    
   }
 
   config = {
