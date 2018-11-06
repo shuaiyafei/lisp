@@ -52,7 +52,6 @@ export default class Qentry extends wepy.component {
 
     async loadQuickentry() {
         this.entryList = await ajax('getQuickentry');
-        console.log(this.entryList);
         this.$apply();
     }
 

@@ -80,7 +80,7 @@
             <qentry></qentry>
             <news></news>
             <qlist></qlist>
-            <banner></banner>
+            <banner :count="count" :groupList="groupList" :bannerList="bannerList"></banner>
             <recommend></recommend>
         </view>
     </view>
@@ -185,7 +185,9 @@ export default class Index extends wepy.page {
             }
         ],
         // 首页数据
-        homePageData: '',
+        homePageData: {
+        },
+        bannerList: '1111',
     };
 
     computed = {
@@ -272,11 +274,14 @@ export default class Index extends wepy.page {
 
     async loadHomepage() {
         this.homePageData = await ajax('getHomepageInfo');
+        this.bannerList = this.homePageData.bannerList;
+        console.log(this.bannerList);
+        console.log(222222222222)
+        console.log(this.homePageData)
         this.$apply();
     }
     onLoad() {
         this.loadHomepage();
-
 
         let self = this;
         this.$parent.getUserInfo(function(userInfo) {

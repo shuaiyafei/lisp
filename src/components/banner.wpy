@@ -26,13 +26,14 @@
 <template>
     <view class="banner">
         <view class="banner-contain">
-            <swiper indicator-dots="{{swiper.dots}}" indicator-color="{{swiper.color}}" indicator-active-color="{{swiper.activeColor}}" autoplay="{{swiper.autoplay}}" interval="{{swiper.interval}}" circular={{swiper.circular}} class="banner-cover">
-                <block wx:for="{{swiper.bannerList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+            {{count}}
+            <!-- <swiper indicator-dots="{{swiper.dots}}" indicator-color="{{swiper.color}}" indicator-active-color="{{swiper.activeColor}}" autoplay="{{swiper.autoplay}}" interval="{{swiper.interval}}" circular={{swiper.circular}} class="banner-cover">
+                <block wx:for="{{bannerList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
                     <swiper-item @tap="jumpDetail({{item.url}})">
                         <image src="{{item.src}}" />
                     </swiper-item>
                 </block>
-            </swiper>
+            </swiper> -->
         </view>
     </view>
 </template>
@@ -40,30 +41,19 @@
 <script>
 import wepy from 'wepy';
 
-const bannerList = [
-    {
-        src:
-            'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/ae51f3deb48f8c545e184c4937292df5e1fe7f89.jpg',
-        url: '1'
-    },
-    {
-        src:
-            'https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/b3fb43166d224f4a5ab8f47504f790529822d1b7.jpg',
-        url: '2'
-    },
-    {
-        src:
-            'https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/37d3d539b6003af3ce6fb206382ac65c1138b6fb.jpg',
-        url: '3'
-    }
-];
-
-console.log(JSON.stringify(bannerList));
-
 export default class Banner extends wepy.component {
+    props = {
+        count: Number,
+        bannerList: {
+            type: Object,
+        },
+        groupList: {
+            type: Object
+        }
+    };
+
     data = {
         swiper: {
-            bannerList,
             dots: true,
             color: 'rgba(255, 255, 255, .5)',
             activeColor: '#fff',
@@ -80,6 +70,12 @@ export default class Banner extends wepy.component {
             });
         }
     };
+    
+    onLoad() {
+        setTimeout(() => {
+            console.log(this)
+        }, 3000);
+    }
 }
 </script>
 
