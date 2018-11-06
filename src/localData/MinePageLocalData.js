@@ -28,25 +28,35 @@ exports.ad = {
 exports.list = [
 
   {
+    id:0,
     info: "常见问题",
-    right:"../../image/common/icon_arrow_list.png"
+    right:"../../image/common/icon_arrow_list.png",
+    extra:""
   },
   {
+    id:1,
     info: "平台规则",
-    right:"../../image/common/icon_arrow_list.png"
+    right:"../../image/common/icon_arrow_list.png",
+    extra:""
   },
   {
+    id:2,
     info: "联系客服",
-    right:"../../image/common/icon_arrow_list.png"
+    right:"../../image/common/icon_arrow_list.png",
+    extra:""
   },
   {
+    id:3,
     info: "设置",
-    right:""
+    right:"",
+    extra:""
   }
   ,
   {
-    info: "关于我们 ：https://github.com/shuaiyafei/lisp",
-    right:""
+    id:4,
+    info: "关于我们",
+    right:"",
+    extra:"https://github.com/shuaiyafei/lisp"
   }
 
 ];
