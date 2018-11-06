@@ -48,51 +48,12 @@
 
 <script>
 import wepy from 'wepy';
-
-const qlist = [
-    {
-        name: '领券中心',
-        desc: '下单享立减',
-        url: '1',
-        src: 'https://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/9825bc315c6034a8abc1179fc613495409237689.jpg',
-    },
-    {
-        name: '领券中心',
-        desc: '下单享立减',
-        url: '2',
-        src: 'https://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/9825bc315c6034a8abc1179fc613495409237689.jpg',
-    },
-    {
-        name: '领券中心',
-        desc: '下单享立减',
-        url: '3',
-        src: 'https://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/9825bc315c6034a8abc1179fc613495409237689.jpg',
-    },
-    {
-        name: '领券中心',
-        desc: '下单享立减',
-        url: '4',
-        src: 'https://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/9825bc315c6034a8abc1179fc613495409237689.jpg',
-    },
-    {
-        name: '领券中心',
-        desc: '下单享立减',
-        url: '5',
-        src: 'https://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/9825bc315c6034a8abc1179fc613495409237689.jpg',
-    },
-    {
-        name: '领券中心',
-        desc: '下单享立减',
-        url: '6',
-        src: 'https://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/9825bc315c6034a8abc1179fc613495409237689.jpg',
-    },
-    
-]
+import ajax from '../common/js/util';
 
 export default class Qlist extends wepy.component {
 
     data = {
-        qlist,
+        qlist: '',
     };
 
     methods = {
@@ -101,6 +62,15 @@ export default class Qlist extends wepy.component {
                 url: `/pages/detail/detail?classifyId=${para}`
             })
         }
+    }
+
+    async loadQuicklist() {
+        this.qlist = await ajax('getQuicklist');
+        this.$apply();
+    }
+    
+    onLoad() {
+        this.loadQuicklist();
     }
 }
 
