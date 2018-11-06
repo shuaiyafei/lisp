@@ -15,9 +15,9 @@
     justify-content: center;
     icon {
         font-size: 30px;
-        background: #fff;
         border-radius: 100px;
-        padding: 5px 6px;     
+        padding: 5px 6px;  
+        color: #fff;   
     }
 }
 </style>
@@ -25,7 +25,7 @@
 <template>
     <view class="quickentry">
         <view class="quickentry-cover" wx:for="{{entryList}}" wx:for-index="index" wx:for-item="item" wx:key="index">
-            <icon class="iconfont"  @tap="jumpEntry({{item.url}})" style="color:{{item.color}}">{{item.src}}</icon>
+            <icon class="iconfont"  @tap="jumpEntry({{item.url}})" style="background:{{item.color}}">{{item.src}}</icon>
             <text>{{item.test}}</text>
         </view>
     </view>
