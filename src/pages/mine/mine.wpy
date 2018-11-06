@@ -121,7 +121,7 @@
 
     <view class="list" wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="index">
 
-      <view class="list-item" >
+      <view class="list-item" @tap="jumpPage({{item.id}})">
         <text>{{item.info}}</text>
         <image src="{{item.right}}"></image>
       </view>
@@ -136,24 +136,18 @@
 import wepy from 'wepy';
 import { header, body, ad, list } from '../../localData/MinePageLocalData.js';
 export default class MinePage extends wepy.page {
-  // 自定义数据
   customData = {};
 
-  //自定义方法
   customFunction() {}
 
-  // 在Page和Component共用的生命周期函数
   onLoad() {}
 
-  // 只在Page中存在的页面生命周期函数
   onShow() {}
 
-  // 只在Page实例中存在的配置数据，对应于原生的page.json文件
   config = {
     navigationBarTitleText: '我的'
   };
 
-  // 页面所需数据均需在这里声明，可用于模板数据绑定
   data = {
     header,
     body,
@@ -161,22 +155,40 @@ export default class MinePage extends wepy.page {
     list
   };
 
-  // 声明页面中所引用的组件，或声明组件中所引用的子组件
   components = {};
 
-  // 声明页面所引用的Mixin实例
   mixins = [];
 
-  // 声明计算属性（详见后文介绍）
   computed = {};
 
-  // 声明数据watcher（详见后文介绍）
   watch = {};
 
-  // 声明页面wxml中标签的事件处理函数。注意，此处只用于声明页面wxml中标签的bind、catch事件，自定义方法需以自定义方法的方式声明
-  methods = {};
+  methods = {
+    jumpPage(index) {
+      let that = this;
+      switch (index) {
+        case 0:
+          break;
+        case 1:
+          break;
+        case 2:
+          break;
+        case 3:
+          break;
+        case 4:
+          that.methods.toAboutUsPage();
+          break;
+      }
+    },
 
-  // 声明组件之间的事件处理函数
+    toAboutUsPage() {
+      var link = list[4].extra;
+      wepy.navigateTo({
+        url: `../../pages/webview/webview?link=${link}`
+      });
+    }
+  };
+
   events = {};
 }
 </script>
