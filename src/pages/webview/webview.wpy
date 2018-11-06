@@ -2,32 +2,26 @@
 </style>
 
 <template>
-  <web-view url="{{url}}"></web-view>
+  <web-view src="{{url}}"></web-view>
 </template>
 
 <script>
 import wepy from 'wepy';
 
 export default class Webview extends wepy.page {
-
   onLoad(options) {
     var that = this;
-    console.log(options);
+    //console.log(options);
     that.setData({
       url: options.link
-    })
+    });
     wx.setNavigationBarTitle({
       title: options.title
-    })
-
+    });
   }
 
   config = {
     navigationBarTitleText: 'web-view'
-  };
-
-  data = {
-    url: 'https://www.baidu.com'
   };
 }
 </script>
