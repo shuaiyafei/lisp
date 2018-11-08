@@ -87,8 +87,9 @@ export default class News extends wepy.component {
 
     methods = {
         jumpNews(para) {
+            console.log(para)
             wepy.navigateTo({
-                url: `/pages/news/news?articleId=${para}`
+                url: `/pages/newsdetail/newsdetail?articleId=${para}`
             });
         }
     };

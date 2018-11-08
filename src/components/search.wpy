@@ -1,0 +1,70 @@
+<style>
+    .search-contain {
+
+    }
+    .search-header {
+        background: url(https://goss2.veer.com/creative/vcg/veer/612/veer-159748963.jpg);
+        background-size: cover;
+        height: 235px;
+    }
+    .search-title {
+        font-size: 24px;
+        color: #fff;
+        line-height: 40px;
+        text-align: center;
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+    }
+    .search-toolbar {
+        border: 1px solid #eee;
+        border-radius: 16px;
+        margin: 5px 20px;
+        padding: 0px 5px;
+        position: relative;
+    }
+    .search-icon {
+        position: absolute;
+        top: 2px;
+        font-size: 24px;
+        display: inline-block;
+        color: #fff;
+    }
+    .search-desc {
+        margin: 5px 25px;
+        font-size: 14px;
+        color: #999;
+        display: inline-block;
+    }
+</style>
+
+<template>
+    <view class="search-contain">
+        <view class="search-header">
+            <block>
+                <text class="search-title">美食</text>
+            </block>
+            <view class="search-toolbar">
+                <icon class="iconfont search-icon">&#xe63a;</icon>
+                <text class="search-desc">蛋糕</text>
+            </view>
+            <view>
+                
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class Search extends wepy.page {
+    data = {
+
+    }
+    
+    methods = {
+        
+    }
+}
+</script>
