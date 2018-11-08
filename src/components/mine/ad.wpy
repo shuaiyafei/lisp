@@ -12,7 +12,7 @@
 </style>
 
 <template>
-    <image class="ad" src="{{content.url}}" @tap="to({{content.target}},{{content.describe}})"></image>
+  <image class="ad" src="{{content.url}}" @tap="to({{content.target}},{{content.describe}})"></image>
 </template>
 
 <script>
@@ -22,13 +22,11 @@ export default class Ad extends wepy.component {
   props = {
     content: {
       type: Object,
-      default:null
+      default: null
     }
   };
 
-  data = {
-
-  };
+  data = {};
 
   methods = {
     to(target, describe) {
@@ -40,9 +38,10 @@ export default class Ad extends wepy.component {
     }
   };
 
-  onLoad(){
-    console.log(this.content); 
+  onLoad() {
+    console.log(this.content);
   }
+}
 </script>
 
 
