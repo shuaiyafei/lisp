@@ -15,11 +15,11 @@
 <script>
 import ajax from '@/common/js/util';
 import wepy from 'wepy';
-import Banner from '@/components/homepage/banner';
-import Qentry from '@/components/homepage/qentry';
-import Qlist from '@/components/homepage/qlist';
-import News from '@/components/homepage/news';
-import Recommend from '@/components/homepage/recommend';
+import Banner from '@/components/banner';
+import Qentry from '@/components/qentry';
+import Qlist from '@/components/qlist';
+import News from '@/components/news';
+import Recommend from '@/components/recommend';
 import Toast from 'wepy-com-toast';
 import testMixin from '@/mixins/test';
 
@@ -59,10 +59,14 @@ export default class Index extends wepy.page {
     this.quickList = homePageData.quickList;
     this.bannerList = homePageData.bannerList;
     this.recommendList = homePageData.recommendList;
+    wx.hideLoading();
     this.$apply();
   }
   onLoad() {
     this.loadHomepage();
+    wx.showLoading({
+        title: '加载中'
+    })
   }
 }
 </script>
