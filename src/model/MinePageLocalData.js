@@ -31,19 +31,19 @@ exports.list = [
 
   {
     id: 0,
-    info: "常见问题",
+    info: "我的卡劵",
     right: "../../image/common/icon_arrow_list.png",
     extra: ""
   },
   {
     id: 1,
-    info: "平台规则",
+    info: "我的足迹",
     right: "../../image/common/icon_arrow_list.png",
     extra: ""
   },
   {
     id: 2,
-    info: "联系客服",
+    info: "我的消息",
     right: "../../image/common/icon_arrow_list.png",
     extra: ""
   },
