@@ -1,44 +1,70 @@
-<style>
-    .q-contain {
-
-    }
-    .q-header {
-        background: url(https://goss2.veer.com/creative/vcg/veer/612/veer-159748963.jpg);
-        background-size: cover;
-        height: 175px;
-    }
-    .q-title {
-        font-size: 24px;
-        color: #fff;
-        line-height: 40px;
-        text-align: center;
-        display: inline-block;
-        text-align: center;
-        width: 100%;
-    }
+<style lang="less">
+.page {
+  background-color: white;
+  height: 100%;
+}
+.q-contain {
+  background-color: white;
+  height: 100%;
+}
+.q-header {
+  height: 175px;
+  image {
+    width: 100%;
+    height: 125px;
+    background-repeat: no-repeat;
+    background-size: auto;
+  }
+  .q-title {
+    font-size: 25px;
+    color: #000;
+    line-height: 40px;
+    text-align: center;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+  }
+}
 </style>
 
 <template>
     <view class="q-contain">
         <view class="q-header">
-            <block>
-                <text class="q-title">美食</text>
-            </block>
-            <view>蛋糕</view>
+            <image src="{{url}}"></image>
+            <view class="q-title">{{title}}</view>
         </view>
     </view>
 </template>
 
 <script>
+
 import wepy from 'wepy';
-
+import quickEntryMap from '../../model/QuickEntryLocalData.js';
 export default class Quickentry extends wepy.page {
-    data = {
+  data = {
+    map: new Map([
+      ['0', '美食'],
+      ['1', '娱乐'],
+      ['2', '酒店'],
+      ['3', '电影'],
+      ['4', '出行'],
+      ['5', '租房'],
+      ['6', '旅行'],
+      ['7', '票券'],
+      ['8', '休闲'],
+      ['9', '洽谈']
+    ]),
+    url: '',
+    title: ''
+  };
 
-    }
-    
-    methods = {
-        
-    }
+  methods = {};
+
+  onLoad(option) {
+    console.log(option);
+    this.url = option.link;
+    this.title = this.map.get(option.groupId);
+    console.log(this.title);
+  }
 }
 </script>
