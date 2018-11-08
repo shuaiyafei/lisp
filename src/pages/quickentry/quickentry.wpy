@@ -5,13 +5,16 @@
     <view>
         <search :entry.sync="entry"></search>
         <news></news>
+        <ad :content.sync="ad"></ad>
     </view>
 </template>
 
 <script>
+import ajax from '@/common/js/util';
 import wepy from 'wepy';
 import Search from '@/components/search';
 import News from '@/components/news';
+import Ad from '@/components/mine/ad';
 
 export default class Quickentry extends wepy.page {
   data = {
@@ -31,22 +34,43 @@ export default class Quickentry extends wepy.page {
       title: '',
       searchDes: '',
       background: ''
+    },
+    ad: {
+      id: '',
+      url:
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541680789521&di=6b1cc986c4addada55561bdbb67e17af&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0161b35a487b5ca801206ed3ee6377.jpg%401280w_1l_2o_100sh.jpg',
+      target: 'https:www.baidu.com',
+      describe: '广告度'
     }
   };
 
   components = {
     search: Search,
-    news: News
+    news: News,
+    ad: Ad
   };
 
   methods = {};
+
+  async loadQuickentryData(id) {
+    const quickentryData = await ajax('getQuickentry');
+    var index = parseInt(id);
+    this.ad = quickentryData.ads[index];
+    wx.hideLoading();
+    this.$apply();
+  }
 
   onLoad(option) {
     console.log(option);
     this.entry.background = option.link;
     this.entry.title = this.map.get(option.groupId);
     this.entry.searchDes = '哈哈';
+    wx.setNavigationBarTitle({
+      title: this.entry.title
+    });
     this.$apply();
+
+    this.loadQuickentryData(option.groupId);
   }
 }
 </script>
