@@ -1,11 +1,11 @@
 <style lang="less">
 @font-face {
   font-family: 'iconfont';  /* project id 904044 */
-  src: url('//at.alicdn.com/t/font_904044_axblpda7sfv.eot');
-  src: url('//at.alicdn.com/t/font_904044_axblpda7sfv.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_904044_axblpda7sfv.woff') format('woff'),
-  url('//at.alicdn.com/t/font_904044_axblpda7sfv.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_904044_axblpda7sfv.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_904044_xvgc4thkzyk.eot');
+  src: url('//at.alicdn.com/t/font_904044_xvgc4thkzyk.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_904044_xvgc4thkzyk.woff') format('woff'),
+  url('//at.alicdn.com/t/font_904044_xvgc4thkzyk.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_904044_xvgc4thkzyk.svg#iconfont') format('svg');
 }
 
 .iconfont {
