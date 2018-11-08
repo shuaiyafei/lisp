@@ -5,19 +5,22 @@
 <template>
     <view>
         <search></search>
+        <news></news>
     </view>
 </template>
 
 <script>
 import wepy from 'wepy';
 import Search from '@/components/search';
+import News from '@/components/news';
 
 export default class Quickentry extends wepy.page {
     data = {
     };
 
     components = {
-        search: Search
+        search: Search,
+        news: News
     };
 
     methods = {};
