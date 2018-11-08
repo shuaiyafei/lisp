@@ -11,7 +11,7 @@ import wepy from 'wepy';
 export default class Webview extends wepy.page {
   onLoad(options) {
     var that = this;
-    //console.log(options);
+    console.log(options);
     that.setData({
       url: options.link
     });

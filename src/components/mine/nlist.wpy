@@ -1,0 +1,61 @@
+<!-- 栏目 -->
+<style lang="less">
+.navigate{
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .item {
+    flex: 1;
+    width: 100rpx;
+    height: 100rpx;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    image {
+      width: 48rpx;
+      height: 48rpx;
+      background-size: auto;
+      background-repeat: no-repeat;
+    }
+    text {
+      margin-top: 4rpx;
+      font-size: 12px;
+    }
+  }
+}
+</style>
+
+<template>
+
+  <view class="navigate">
+    <view class="item" wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:for-item="item" wx:key="index">
+      <image src="{{item.icon}}" />
+      <text>{{item.des}}</text>
+    </view>
+  </view>
+
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class NavigateList extends wepy.component {
+
+  props = {
+    list: {
+      type: Array,
+      default:[]
+    }
+  }
+
+  methods = {
+    
+  }
+}
+</script>
+
+
+
+
