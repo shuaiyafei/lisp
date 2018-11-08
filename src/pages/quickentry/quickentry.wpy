@@ -1,10 +1,35 @@
-<style>
-   
+<style lang="less">
+.page {
+  background-color: white;
+  height: 100%;
+}
+.q-contain {
+  background-color: white;
+  height: 100%;
+}
+.q-header {
+  height: 175px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  .q-title {
+    font-size: 24px;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+  }
+}
 </style>
 
 <template>
-    <view>
-        <search></search>
+    <view class="q-contain">
+        <view class="q-header" style="background:url({{url}})">
+            <view class="q-title">{{title}}</view>
+        </view>
     </view>
 </template>
 
@@ -13,7 +38,24 @@ import wepy from 'wepy';
 import Search from '@/components/search'
 
 export default class Quickentry extends wepy.page {
-    data = {
+  data = {
+    map: new Map([
+      ['0', '美食'],
+      ['1', '娱乐'],
+      ['2', '酒店'],
+      ['3', '电影'],
+      ['4', '出行'],
+      ['5', '租房'],
+      ['6', '旅行'],
+      ['7', '票券'],
+      ['8', '休闲'],
+      ['9', '洽谈']
+    ]),
+    url: '',
+    title: ''
+  };
+
+  methods = {};
 
     }
 
@@ -24,5 +66,5 @@ export default class Quickentry extends wepy.page {
     methods = {
         
     }
-}
+
 </script>

@@ -32,7 +32,7 @@ import {
   body,
   adContent,
   list
-} from '../../model/MinePageLocalData.js';
+} from '../../model/MinePageModel.js';
 import wepy from 'wepy';
 import Header from '@/components/mine/userinfo';
 import Ad from '@/components/mine/ad';
