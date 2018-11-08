@@ -29,8 +29,15 @@
 			"list": []
 		},
 		"plugin": {
-			"current": -1,
-			"list": []
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "quickentry",
+					"pathName": "pages/quickentry/quickentry",
+					"query": ""
+				}
+			]
 		},
 		"game": {
 			"list": []

@@ -1,10 +1,9 @@
 <style lang="less">
-
 </style>
 
 <template>
     <view>
-        <search></search>
+        <search :entry.sync="entry"></search>
         <news></news>
     </view>
 </template>
@@ -15,14 +14,39 @@ import Search from '@/components/search';
 import News from '@/components/news';
 
 export default class Quickentry extends wepy.page {
-    data = {
-    };
+  data = {
+    map: new Map([
+      ['0', '美食ss'],
+      ['1', '娱乐'],
+      ['2', '酒店'],
+      ['3', '电影'],
+      ['4', '出行'],
+      ['5', '租房'],
+      ['6', '旅行'],
+      ['7', '票券'],
+      ['8', '休闲'],
+      ['9', '洽谈']
+    ]),
+    entry: {
+      title: '',
+      searchDes: '',
+      background: ''
+    }
+  };
 
-    components = {
-        search: Search,
-        news: News
-    };
+  components = {
+    search: Search,
+    news: News
+  };
 
-    methods = {};
+  methods = {};
+
+  onLoad(option) {
+    console.log(option);
+    this.entry.background = option.link;
+    this.entry.title = this.map.get(option.groupId);
+    this.entry.searchDes = '哈哈';
+    this.$apply();
+  }
 }
 </script>
