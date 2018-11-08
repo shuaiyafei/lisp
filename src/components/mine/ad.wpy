@@ -43,6 +43,7 @@ export default class Ad extends wepy.component {
   onLoad(){
     console.log(this.content); 
   }
+}
 </script>
 
 
