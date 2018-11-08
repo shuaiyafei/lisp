@@ -5,7 +5,7 @@
     .search-header {
         background: url(https://goss2.veer.com/creative/vcg/veer/612/veer-159748963.jpg);
         background-size: cover;
-        height: 235px;
+        height: 270px;
     }
     .search-title {
         font-size: 24px;
@@ -36,6 +36,36 @@
         color: #999;
         display: inline-block;
     }
+    .search-list {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 10px;
+    }
+    .search-entry {
+        width: 25%;
+        display: flex;
+        align-items:center;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+    .search-entry-cover {
+        background: #999;
+        border-radius: 100%;
+        width: 100rpx;
+        height: 100rpx;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .search-entry-cover-icon {
+        font-size: 30px;
+        color: #fff;
+    }
+    .search-entry-desc {
+        color: #fff;
+        font-size: 14px;
+    }
 </style>
 
 <template>
@@ -48,8 +78,15 @@
                 <icon class="iconfont search-icon">&#xe63a;</icon>
                 <text class="search-desc">蛋糕</text>
             </view>
-            <view>
-                
+            <view class="search-list">
+                <view class="search-entry" wx:for="{{test}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+                    <view class="search-entry-cover">
+                        <icon class="iconfont search-entry-cover-icon">{{item.src}}</icon>
+                    </view>
+                    <view>
+                        <text class="search-entry-desc">{{item.title}}</text>
+                    </view>
+                </view>
             </view>
         </view>
     </view>
@@ -58,9 +95,53 @@
 <script>
 import wepy from 'wepy';
 
+const test = [
+    {
+        title: '自助餐',
+        src: '\ue658',
+        url: 1
+    },
+    {
+        title: '烤肉',
+        src: '\ue626',
+        url: 2
+    },
+    {
+        title: '小吃快餐',
+        src: '\ue605',
+        url: 3
+    },
+    {
+        title: '西餐',
+        src: '\ue755',
+        url: 4
+    },
+    {
+        title: '外卖',
+        src: '\ue618',
+        url: 5
+    },
+    {
+        title: '火锅',
+        src: '\ue66a',
+        url: 6
+    },
+    {
+        title: '炒菜',
+        src: '\ue60d',
+        url: 7
+    },
+    {
+        title: '海鲜',
+        src: '\ue650',
+        url: 8
+    },
+    
+]
+
 export default class Search extends wepy.page {
     data = {
-
+        test
     }
     
     methods = {
