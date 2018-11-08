@@ -16,11 +16,11 @@
     background-size: auto;
   }
   .q-title {
+    position: absoulte;
+    margin: auto;
     font-size: 25px;
     color: #000;
     line-height: 40px;
-    text-align: center;
-    display: inline-block;
     text-align: center;
     width: 100%;
   }
@@ -38,10 +38,20 @@
 
 <script>
 import wepy from 'wepy';
-import quickEntryMap from '../../model/QuickEntryModel.js';
 export default class Quickentry extends wepy.page {
   data = {
-    quickEntryMap,
+    map: new Map([
+      ['0', '美食'],
+      ['1', '娱乐'],
+      ['2', '酒店'],
+      ['3', '电影'],
+      ['4', '出行'],
+      ['5', '租房'],
+      ['6', '旅行'],
+      ['7', '票券'],
+      ['8', '休闲'],
+      ['9', '洽谈']
+    ]),
     url: '',
     title: ''
   };
@@ -51,8 +61,7 @@ export default class Quickentry extends wepy.page {
   onLoad(option) {
     console.log(option);
     this.url = option.link;
-    this.title = this.quickEntryMap.get(option.groupId);
-    console.log(this.title);
+    this.title = this.map.get(option.groupId);
   }
 }
 </script>
