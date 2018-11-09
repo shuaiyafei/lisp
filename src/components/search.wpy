@@ -1,81 +1,85 @@
-<style>
+<style lang="less">
 .search-contain {
+  width: 100%;
 }
 .search-header {
+  display: flex;
+  flex-direction: column;
   background-size: cover;
   height: 270px;
-}
-.search-toolbar {
-  border: 1px solid #eee;
-  border-radius: 16px;
-  margin: 5px 20px;
-  padding: 0px 5px;
-  position: relative;
-}
-.search-icon {
-  position: absolute;
-  top: 2px;
-  font-size: 24px;
-  display: inline-block;
-  color: #fff;
-}
-.search-desc {
-  margin: 5px 25px;
-  font-size: 14px;
-  color: #999;
-  display: inline-block;
-}
-.search-list {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 10px;
-}
-.search-entry {
-  width: 25%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 10px;
-}
-.search-entry-cover {
-  background: #999;
-  border-radius: 100%;
-  width: 100rpx;
-  height: 100rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.search-entry-cover-icon {
-  font-size: 30px;
-  color: #fff;
-}
-.search-entry-desc {
-  color: #fff;
-  font-size: 14px;
+  .search-toolbar {
+    border: 1px solid #eee;
+    border-radius: 16px;
+    margin: 8px 20px 5px 20px;
+    padding: 0px 5px;
+    height: 35px;
+    position: relative;
+    .search-icon {
+      position: relative;
+      top: 2px;
+      font-size: 24px;
+      display: inline-block;
+      color: #fff;
+    }
+    .search-desc {
+      margin: 5px 25px;
+      font-size: 14px;
+      color: #999;
+      display: inline-block;
+    }
+  }
+  .search-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    .search-entry {
+      width: 25%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 10px;
+      .search-entry-cover {
+        background: #999;
+        border-radius: 100%;
+        width: 100rpx;
+        height: 100rpx;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .search-entry-cover-icon {
+        font-size: 30px;
+        color: #fff;
+      }
+      .search-entry-desc {
+        color: #fff;
+        font-size: 14px;
+      }
+    }
+  }
 }
 </style>
 
 <template>
-    <view class="search-contain">
-        <view class="search-header" style="background:url({{entry.background}})">
-            <view class="search-toolbar">
-                <icon class="iconfont search-icon">&#xe63a;</icon>
-                <text class="search-desc">{{entry.searchDes}}</text>
-            </view>
-            <view class="search-list">
-                <view class="search-entry" wx:for="{{test}}" wx:for-index="index" wx:for-item="item" wx:key="index">
-                    <view class="search-entry-cover">
-                        <icon class="iconfont search-entry-cover-icon">{{item.src}}</icon>
-                    </view>
-                    <view>
-                        <text class="search-entry-desc">{{item.title}}</text>
-                    </view>
-                </view>
-            </view>
+  <view class="search-contain">
+    <view class="search-header" style="background:url({{entry.background}})">
+      <view class="search-toolbar">
+        <icon class="iconfont search-icon">&#xe63a;</icon>
+        <text class="search-desc">{{entry.searchDes}}</text>
+      </view>
+      <view class="search-list">
+        <view class="search-entry" wx:for="{{test}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+          <view class="search-entry-cover">
+            <icon class="iconfont search-entry-cover-icon">{{item.src}}</icon>
+          </view>
+          <view>
+            <text class="search-entry-desc">{{item.title}}</text>
+          </view>
         </view>
+      </view>
     </view>
+  </view>
 </template>
 
 <script>

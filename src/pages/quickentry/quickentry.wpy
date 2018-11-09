@@ -11,7 +11,7 @@
 
 <script>
 import ajax from '@/common/js/util';
-import quickEntryMap from '../../model/QuickEntryModel.js';
+import quickEntryMap from '@/model/QuickEntryModel';
 import wepy from 'wepy';
 import Search from '@/components/search';
 import News from '@/components/news';
