@@ -5,15 +5,6 @@
   background-size: cover;
   height: 270px;
 }
-.search-title {
-  font-size: 24px;
-  color: #fff;
-  line-height: 40px;
-  text-align: center;
-  display: inline-block;
-  text-align: center;
-  width: 100%;
-}
 .search-toolbar {
   border: 1px solid #eee;
   border-radius: 16px;
@@ -69,9 +60,6 @@
 <template>
     <view class="search-contain">
         <view class="search-header" style="background:url({{entry.background}})">
-            <block>
-                <text class="search-title">{{entry.title}}</text>
-            </block>
             <view class="search-toolbar">
                 <icon class="iconfont search-icon">&#xe63a;</icon>
                 <text class="search-desc">{{entry.searchDes}}</text>

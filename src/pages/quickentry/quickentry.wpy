@@ -2,15 +2,16 @@
 </style>
 
 <template>
-    <view>
-        <search :entry.sync="entry"></search>
-        <news></news>
-        <ad :content.sync="ad"></ad>
-    </view>
+  <view>
+    <search :entry.sync="entry"></search>
+    <news></news>
+    <ad :content.sync="ad"></ad>
+  </view>
 </template>
 
 <script>
 import ajax from '@/common/js/util';
+import quickEntryMap from '../../model/QuickEntryModel.js';
 import wepy from 'wepy';
 import Search from '@/components/search';
 import News from '@/components/news';
@@ -18,30 +19,17 @@ import Ad from '@/components/mine/ad';
 
 export default class Quickentry extends wepy.page {
   data = {
-    map: new Map([
-      ['0', '美食ss'],
-      ['1', '娱乐'],
-      ['2', '酒店'],
-      ['3', '电影'],
-      ['4', '出行'],
-      ['5', '租房'],
-      ['6', '旅行'],
-      ['7', '票券'],
-      ['8', '休闲'],
-      ['9', '洽谈']
-    ]),
     entry: {
-      title: '',
       searchDes: '',
       background: ''
     },
     ad: {
       id: '',
-      url:
-        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541680789521&di=6b1cc986c4addada55561bdbb67e17af&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0161b35a487b5ca801206ed3ee6377.jpg%401280w_1l_2o_100sh.jpg',
-      target: 'https:www.baidu.com',
-      describe: '广告度'
-    }
+      url:'',
+      target: '',
+      describe: ''
+    },
+    quickEntryMap
   };
 
   components = {
@@ -62,15 +50,15 @@ export default class Quickentry extends wepy.page {
 
   onLoad(option) {
     console.log(option);
+    console.log(this);
     this.entry.background = option.link;
-    this.entry.title = this.map.get(option.groupId);
     this.entry.searchDes = '哈哈';
     wx.setNavigationBarTitle({
-      title: this.entry.title
+      title: this.quickEntryMap.quickEntryMap.get(option.groupId)
     });
     this.$apply();
-
     this.loadQuickentryData(option.groupId);
   }
+
 }
 </script>
