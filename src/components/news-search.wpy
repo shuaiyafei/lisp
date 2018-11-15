@@ -1,0 +1,62 @@
+<style lang="less">
+.search-contain {
+    width: 100%;
+}
+.search-header {
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    height: 35px;
+    background: #fff;
+    .search-toolbar {
+        border: 1px solid #eee;
+        border-radius: 16px;
+        margin: 8px 20px 5px 20px;
+        padding: 0px 5px;
+        height: 30px;
+        position: relative;
+        background: #f0f0f0;
+        color: #666;
+        .search-icon {
+            position: relative;
+            top: 1px;
+            left: 4px;
+            font-size: 24px;
+            display: inline-block;
+            color: #666;
+        }
+        .search-desc {
+            margin: 5px 25px;
+            font-size: 14px;
+            color: #999;
+            display: inline-block;
+        }
+    }
+}
+</style>
+
+<template>
+    <view class="search-contain">
+        <view class="search-header">
+            <view class="search-toolbar">
+                <icon class="iconfont search-icon">&#xe63a;</icon>
+                <text class="search-desc">{{entry.searchDes}}</text>
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class extends wepy.component {
+    props = {
+        
+    };
+
+    data = {
+    };
+
+    methods = {};
+}
+</script>

@@ -3,11 +3,14 @@
 </style>
 
 <template>
-    
+    <view>
+        <text></text>
+    </view>
 </template>
 
 <script>
 import wepy from 'wepy';
+import ajax from '@/common/js/util';
 
 export default class Newsdetail extends wepy.page {
     data = {

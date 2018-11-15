@@ -1,0 +1,106 @@
+<style lang="less">
+.tab-contain {
+    width: 100%;
+}
+.tab-header {
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    height: 270px;
+    background: #fff;
+}
+.tab-scroll {
+    display: flex;
+    white-space: nowrap;
+    height: 50px;
+}
+.tab-option {
+    width: 25%;
+    height: 50px;
+    display: inline-block;
+    text-align: center;
+    line-height: 50px;
+}
+.tab-option-desc {
+    display: inline-block;
+    height: 45px;
+    color: #666;
+    font-size: 16px;
+}
+.tab-option-desc.underline {
+    border-bottom: 2px solid #666;
+}
+
+</style>
+
+<template>
+    <view class="tab-contain">
+       <scroll-view class="tab-scroll" scroll-x>
+           <view wx:for="{{tabList}}" wx:for-item="item" wx:for-index="index" wx:key="index" class="tab-option" @tap="jumpTab({{item.id}})">
+               <text class="tab-option-desc {{index == currentCheck ? 'underline' : ''}}">{{item.name}}</text>
+           </view>
+       </scroll-view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+const tabList = [
+    {
+        name: '推荐',
+        id: 0
+    },
+    {
+        name: '爱美食',
+        id: 1
+    },
+    {
+        name: '嫁幸福',
+        id: 2
+    },
+    {
+        name: '爱美丽',
+        id: 3
+    },
+    {
+        name: '趣休闲',
+        id: 4
+    },
+    {
+        name: '玩社区',
+        id: 5
+    },
+    {
+        name: '小视频',
+        id: 6
+    },
+    {
+        name: '享亲子',
+        id: 7
+    },
+    {
+        name: '爱学习',
+        id: 8
+    }
+]
+
+
+export default class extends wepy.component {
+    props = {
+
+    };
+
+    data = {
+        tabList,
+        currentCheck: 0,
+    };
+
+    methods = {
+        jumpTab(id) {
+            this.currentCheck = id;
+            console.log(id)
+        }
+    };
+}
+</script>

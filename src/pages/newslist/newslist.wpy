@@ -1,21 +1,36 @@
 <style>
-
 </style>
 
 <template>
-    
+    <view>
+        <newsSearch></newsSearch>
+        <newsTab></newsTab>
+        <newsList></newsList>
+    </view>
 </template>
 
 <script>
 import wepy from 'wepy';
+import NewsSearch from '@/components/news-search';
+import NewsTab from '@/components/news-tab';
+import NewsList from '@/components/news-list';
 
 export default class Newslist extends wepy.page {
-    data = {
+    config = {
+        backgroundTextStyle: '#fff',
+        navigationBarBackgroundColor: '#599eff',
+        navigationBarTitleText: '新闻列表',
+        navigationBarTextStyle: '#fff'
+    };
 
-    }
-    
-    methods = {
-        
-    }
+    data = {};
+
+    methods = {};
+
+    components = {
+        newsSearch: NewsSearch,
+        newsTab: NewsTab,
+        newsList: NewsList,
+    };
 }
 </script>
