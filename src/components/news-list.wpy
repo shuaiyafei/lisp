@@ -12,8 +12,8 @@
 }
 
 .newslist-panel-img {
-    width: 45%;
-    height: 70%;
+    width: 100px;
+    height: 60px;
 }
 .newslist-panel-content {
     height: 70%;
@@ -25,6 +25,7 @@
 .newslist-panel-desc {
     font-size: 16px;
     color: #333;
+    width: 240px;
 }
 .newslist-panel-detail {
     font-size: 14px;
@@ -37,12 +38,12 @@
 <template>
     <view class="newslist-contain">
         <view class="newslist-panel" wx:for="{{newsList}}" wx:for-item="item" wx:for-index="index" wx:key="index" @tap="jumpNewsDetail({{item.articleId}})">
-            <image class="newslist-panel-img" src="{{item.bgUrl}}" />
+            <image class="newslist-panel-img" src="{{item.src}}" />
             <view class="newslist-panel-content">
                 <view class="newslist-panel-desc">{{item.desc}}</view>
                 <view class="newslist-panel-detail">
                     <text>{{item.belong}}</text>
-                    <text>{{item.viewTime}}次浏览</text>
+                    <text>{{item.viewNum}}</text>
                 </view>
             </view>
         </view>
@@ -51,64 +52,55 @@
 
 <script>
 import wepy from 'wepy';
-
-const newsList = [
-    {
-        bgUrl:
-            'http://c.hiphotos.baidu.com/lbs/pic/item/a71ea8d3fd1f4134ed141d64281f95cad1c85e8c.webp',
-        desc: '京城肉饼界的扛把子！招牌只卖28！就开在故宫边上',
-        belong: '北京吃货团',
-        viewTime: '8103',
-        articleId: 1
-    },
-    {
-        bgUrl:
-            'http://c.hiphotos.baidu.com/lbs/pic/item/a71ea8d3fd1f4134ed141d64281f95cad1c85e8c.webp',
-        desc: '京城肉饼界的扛把子！招牌只卖28！就开在故宫边上',
-        belong: '北京吃货团',
-        viewTime: '8103',
-        articleId: 1
-    },
-    {
-        bgUrl:
-            'http://c.hiphotos.baidu.com/lbs/pic/item/a71ea8d3fd1f4134ed141d64281f95cad1c85e8c.webp',
-        desc: '京城肉饼界的扛把子！招牌只卖28！就开在故宫边上',
-        belong: '北京吃货团',
-        viewTime: '8103',
-        articleId: 1
-    },
-    {
-        bgUrl:
-            'http://c.hiphotos.baidu.com/lbs/pic/item/a71ea8d3fd1f4134ed141d64281f95cad1c85e8c.webp',
-        desc: '京城肉饼界的扛把子！招牌只卖28！就开在故宫边上',
-        belong: '北京吃货团',
-        viewTime: '8103',
-        articleId: 1
-    },
-    {
-        bgUrl:
-            'http://c.hiphotos.baidu.com/lbs/pic/item/a71ea8d3fd1f4134ed141d64281f95cad1c85e8c.webp',
-        desc: '京城肉饼界的扛把子！招牌只卖28！就开在故宫边上',
-        belong: '北京吃货团',
-        viewTime: '8103'
-    },
-    {
-        bgUrl:
-            'http://c.hiphotos.baidu.com/lbs/pic/item/a71ea8d3fd1f4134ed141d64281f95cad1c85e8c.webp',
-        desc: '京城肉饼界的扛把子！招牌只卖28！就开在故宫边上',
-        belong: '北京吃货团',
-        viewTime: '8103',
-        articleId: 1
-    }
-];
+import util from '@/common/js/util';
 
 export default class extends wepy.component {
-    props = {};
-
-    data = {
-        newsList
+    props = {
+        currentCheck: {
+            type: String,
+            default: 0,
+            twoWay: true,
+        }
     };
 
-    methods = {};
+    watch = {
+        currentCheck(v) {
+            this.init();
+        }
+    }
+
+    data = {
+        newsList: []
+    };
+
+    methods = {
+        jumpNewsDetail(articleId) {
+            wepy.navigateTo({
+                url: `/pages/newsdetail/newsdetail?articleId=${articleId}`
+            });
+        }
+    };
+
+    async loadNewslist() {
+        this.newsList = await util.ajax({
+            url: 'getNewsList',
+            para: {
+                id: this.currentCheck,
+            }
+        });
+        this.$apply();
+        wx.hideLoading();
+    }
+
+    init() {
+        this.loadNewslist();
+        wx.showLoading({
+            title: '加载中'
+        });
+    }
+
+    onLoad() {
+        this.init();
+    }
 }
 </script>

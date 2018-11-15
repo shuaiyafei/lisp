@@ -1,0 +1,93 @@
+<style lang="less">
+    .newsdetail-title {
+        margin: 0 20px;
+        text {
+            font-size: 22px;
+            color: #000;
+            font-weight: bold;
+        }
+    }
+    .newsdetail-desc {
+        margin: 0 20px;
+        font-size: 13px;
+        color: #999;
+        display: flex;
+    }
+    .newsdetail-desc text {
+        margin-right: 20px;
+    }
+</style>
+
+<template>
+    <view>
+        <view class="newsdetail-contain">
+            <view class="newsdetail-title">
+                <text>
+                    {{newsdetail.title}}
+                </text>
+            </view>
+            <view class="newsdetail-desc">
+                <text>
+                    {{currentTime}}
+                </text>
+                <text>
+                    {{newsdetail.source}}
+                </text>
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import util from '@/common/js/util';
+// import WxParse from '@/common/wxParse/wxParse';
+
+export default class extends wepy.component {
+    props = {};
+
+    watch = {};
+
+    data = {
+        newsdetail: '',
+        currentTime: ''
+    };
+
+    methods = {};
+
+    
+
+    async loadNewsdetail() {
+        this.newsdetail = await util.ajax({
+            url: 'http://chi.nuomi.com/bizareatop',
+            para: {
+                action: 'getArticleDetail',
+                column_id: 281103,
+                area_id: 100010000,
+                config_id: 0,
+                pa: 'nuomi',
+                type: 4,
+                origin: undefined,
+                bizfrom: 'wap_home'
+            },
+            isUseOrigin: false
+        });
+        this.currentTime = await util.transTime(this.newsdetail.time);
+        this.$apply();
+        wx.hideLoading();
+    }
+
+    
+
+    init() {
+        this.loadNewsdetail();
+        wx.showLoading({
+            title: '加载中'
+        });
+    }
+
+    onLoad() {
+        this.init();
+    }
+}
+</script>

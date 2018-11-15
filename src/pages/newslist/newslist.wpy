@@ -1,36 +1,56 @@
 <style>
+
 </style>
 
 <template>
     <view>
         <newsSearch></newsSearch>
-        <newsTab></newsTab>
-        <newsList></newsList>
+        <newsTab :tabList.sync="tabList" :currentCheck.sync="currentCheck"></newsTab>
+        <newsList :currentCheck.sync="currentCheck"></newsList>
     </view>
 </template>
 
 <script>
-import wepy from 'wepy';
-import NewsSearch from '@/components/news-search';
-import NewsTab from '@/components/news-tab';
-import NewsList from '@/components/news-list';
-
-export default class Newslist extends wepy.page {
-    config = {
-        backgroundTextStyle: '#fff',
-        navigationBarBackgroundColor: '#599eff',
-        navigationBarTitleText: '新闻列表',
-        navigationBarTextStyle: '#fff'
-    };
-
-    data = {};
-
-    methods = {};
-
-    components = {
-        newsSearch: NewsSearch,
-        newsTab: NewsTab,
-        newsList: NewsList,
-    };
-}
+    import wepy from 'wepy';
+    import util from '@/common/js/util';
+    import NewsSearch from '@/components/news-search';
+    import NewsTab from '@/components/news-tab';
+    import NewsList from '@/components/news-list';
+    
+    export default class Newslist extends wepy.page {
+        config = {
+            backgroundTextStyle: '#fff',
+            navigationBarBackgroundColor: '#599eff',
+            navigationBarTitleText: '商圈头条',
+            navigationBarTextStyle: '#fff'
+        };
+        data = {
+            tabList: [],
+            currentCheck: 0,
+        };
+        // watch = {
+        //     currentCheck(v) {
+        //         console.log(this.currentCheck)
+        //     }
+        // }
+        methods = {};
+        async loadNewstabPage() {
+            this.tabList = await util.ajax({
+                url: 'getNewsTab'
+            });
+            this.$apply();
+            wx.hideLoading();
+        }
+        components = {
+            newsSearch: NewsSearch,
+            newsTab: NewsTab,
+            newsList: NewsList
+        };
+        onLoad() {
+            this.loadNewstabPage();
+            wx.showLoading({
+                title: '加载中'
+            });
+        }
+    }
 </script>

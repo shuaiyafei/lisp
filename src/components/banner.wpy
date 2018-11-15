@@ -1,25 +1,25 @@
 <!-- 导航栏 -->
 <style lang="less">
 .banner {
-  width: 100%;
-  height: 175px;
-  padding: 10px 0;
-  background: #f0f4f5;
+    width: 100%;
+    height: 175px;
+    padding: 10px 0;
+    background: #f0f4f5;
 }
 .banner-contain {
-  width: 100%;
-  height: 100%;
-  background: #fff;
-}
-.banner-cover {
-  width: 90%;
-  height: 90%;
-  padding-top: 2.5%;
-  padding-left: 5%;
-  image {
     width: 100%;
     height: 100%;
-  }
+    background: #fff;
+}
+.banner-cover {
+    width: 90%;
+    height: 90%;
+    padding-top: 2.5%;
+    padding-left: 5%;
+    image {
+        width: 100%;
+        height: 100%;
+    }
 }
 </style>
 
@@ -41,32 +41,32 @@
 import wepy from 'wepy';
 
 export default class Banner extends wepy.component {
-  props = {
-    bannerList: {
-      type: Array,
-      default: [],
-      //twoWay: true
-    }
-  };
+    props = {
+        bannerList: {
+            type: Array,
+            default: []
+            //twoWay: true
+        }
+    };
 
-  data = {
-    swiper: {
-      dots: true,
-      color: 'rgba(255, 255, 255, .5)',
-      activeColor: '#fff',
-      autoplay: true,
-      interval: '2000',
-      circular: true
-    }
-  };
+    data = {
+        swiper: {
+            dots: true,
+            color: 'rgba(255, 255, 255, .5)',
+            activeColor: '#fff',
+            autoplay: true,
+            interval: '2000',
+            circular: true
+        }
+    };
 
-  methods = {
-    jumpDetail(para) {
-      wepy.navigateTo({
-        url: `/pages/detail/detail?classifyId=${para}`
-      });
-    }
-  };
+    methods = {
+        jumpDetail(para) {
+            wepy.navigateTo({
+                url: `/pages/detail/detail?classifyId=${para}`
+            });
+        }
+    };
 }
 </script>
 

@@ -1,24 +1,33 @@
 <style>
-
 </style>
 
 <template>
     <view>
-        <text></text>
+        <newsDetail></newsDetail>
     </view>
 </template>
 
 <script>
 import wepy from 'wepy';
-import ajax from '@/common/js/util';
+import util from '@/common/js/util';
+import NewsDetail from '@/components/news-detail';
 
 export default class Newsdetail extends wepy.page {
-    data = {
+    config = {
+        backgroundTextStyle: '#fff',
+        navigationBarBackgroundColor: '#599eff',
+        navigationBarTitleText: '商圈专栏',
+        navigationBarTextStyle: '#fff'
+    };
 
-    }
-    
+    data = {};
+
     methods = {
         
+    };
+
+    components = {
+        newsDetail: NewsDetail
     }
 }
 </script>
