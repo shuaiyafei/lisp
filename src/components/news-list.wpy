@@ -60,12 +60,20 @@ export default class extends wepy.component {
             type: String,
             default: 0,
             twoWay: true,
+        },
+        currentPage: {
+            type: Number,
+            default: 1,
         }
     };
 
     watch = {
         currentCheck(v) {
             this.init();
+        },
+        currentPage(v) {
+            this.init();
+            console.log(`当前为第${v}页`);
         }
     }
 
@@ -82,12 +90,12 @@ export default class extends wepy.component {
     };
 
     async loadNewslist() {
-        this.newsList = await util.ajax({
+        this.newsList = this.newsList.concat(await util.ajax({
             url: 'getNewsList',
             para: {
                 id: this.currentCheck,
             }
-        });
+        }));
         this.$apply();
         wx.hideLoading();
     }
@@ -102,5 +110,7 @@ export default class extends wepy.component {
     onLoad() {
         this.init();
     }
+
+    
 }
 </script>

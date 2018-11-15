@@ -46,7 +46,8 @@ export default class Index extends wepy.page {
         bannerList: [],
         newsList: [],
         quickList: [],
-        recommendList: []
+        recommendList: [],
+        currentPage: 1
     };
 
     methods = {};
@@ -63,11 +64,38 @@ export default class Index extends wepy.page {
         wx.hideLoading();
         this.$apply();
     }
-    onLoad() {
+    init() {
         this.loadHomepage();
         wx.showLoading({
             title: '加载中'
         });
+    }
+
+    async loadRecomendData() {
+        this.recommendList = this.recommendList.concat(
+            await util.ajax({
+                url: 'getRecommendList'
+            })
+        );
+        wx.hideLoading();
+        this.$apply();
+    }
+
+    loadMore() {
+        wx.showLoading({
+            title: '加载中'
+        });
+        this.loadRecomendData();
+    }
+
+    onLoad() {
+        this.init();
+    }
+    // 下拉加载更多
+    onReachBottom() {
+        this.currentPage += 1;
+        console.log(`当前为第${this.currentPage}页`);
+        this.loadMore();
     }
 }
 </script>

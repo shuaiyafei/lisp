@@ -1,56 +1,60 @@
 <style>
-
 </style>
 
 <template>
     <view>
         <newsSearch></newsSearch>
         <newsTab :tabList.sync="tabList" :currentCheck.sync="currentCheck"></newsTab>
-        <newsList :currentCheck.sync="currentCheck"></newsList>
+        <newsList :currentCheck.sync="currentCheck" :currentPage.sync="currentPage"></newsList>
     </view>
 </template>
 
 <script>
-    import wepy from 'wepy';
-    import util from '@/common/js/util';
-    import NewsSearch from '@/components/news-search';
-    import NewsTab from '@/components/news-tab';
-    import NewsList from '@/components/news-list';
-    
-    export default class Newslist extends wepy.page {
-        config = {
-            backgroundTextStyle: '#fff',
-            navigationBarBackgroundColor: '#599eff',
-            navigationBarTitleText: '商圈头条',
-            navigationBarTextStyle: '#fff'
-        };
-        data = {
-            tabList: [],
-            currentCheck: 0,
-        };
-        // watch = {
-        //     currentCheck(v) {
-        //         console.log(this.currentCheck)
-        //     }
+import wepy from 'wepy';
+import util from '@/common/js/util';
+import NewsSearch from '@/components/news-search';
+import NewsTab from '@/components/news-tab';
+import NewsList from '@/components/news-list';
+
+export default class Newslist extends wepy.page {
+    config = {
+        backgroundTextStyle: '#fff',
+        navigationBarBackgroundColor: '#599eff',
+        navigationBarTitleText: '商圈头条',
+        navigationBarTextStyle: '#fff'
+    };
+    data = {
+        tabList: [],
+        currentCheck: 0,
+        currentPage: 1,
+    };
+    watch = {
+        // currentPage(v) {
+        //     console.log(`当前为第${v}页`)
         // }
-        methods = {};
-        async loadNewstabPage() {
-            this.tabList = await util.ajax({
-                url: 'getNewsTab'
-            });
-            this.$apply();
-            wx.hideLoading();
-        }
-        components = {
-            newsSearch: NewsSearch,
-            newsTab: NewsTab,
-            newsList: NewsList
-        };
-        onLoad() {
-            this.loadNewstabPage();
-            wx.showLoading({
-                title: '加载中'
-            });
-        }
     }
+    methods = {};
+    async loadNewstabPage() {
+        this.tabList = await util.ajax({
+            url: 'getNewsTab'
+        });
+        this.$apply();
+        wx.hideLoading();
+    }
+    components = {
+        newsSearch: NewsSearch,
+        newsTab: NewsTab,
+        newsList: NewsList
+    };
+    onLoad() {
+        this.loadNewstabPage();
+        wx.showLoading({
+            title: '加载中'
+        });
+    }
+    // 下拉加载更多
+    onReachBottom() {
+        this.currentPage += 1;
+    }
+}
 </script>
