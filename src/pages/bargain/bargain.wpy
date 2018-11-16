@@ -2,11 +2,14 @@
 </style>
 
 <template>
-
+    <view>
+        <bargainList></bargainList>
+    </view>
 </template>
 
 <script>
 import wepy from 'wepy';
+import BargainList from '@/components/bargain-list';
 
 export default class Bargain extends wepy.page {
     config = {
@@ -14,6 +17,12 @@ export default class Bargain extends wepy.page {
         navigationBarBackgroundColor: '#599eff',
         navigationBarTitleText: '疯狂砍价',
         navigationBarTextStyle: '#fff'
+    };
+    data = {};
+    methods = {};
+    watch = {};
+    components = {
+        bargainList: BargainList
     };
 }
 </script>

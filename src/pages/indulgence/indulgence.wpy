@@ -2,11 +2,14 @@
 </style>
 
 <template>
-
+    <view>
+        <indulgenceList></indulgenceList>
+    </view>
 </template>
 
 <script>
 import wepy from 'wepy';
+import IndulgenceList from '@/components/indulgence-list';
 
 export default class Indulgence extends wepy.page {
     config = {
@@ -15,5 +18,11 @@ export default class Indulgence extends wepy.page {
         navigationBarTitleText: '天天特惠',
         navigationBarTextStyle: '#fff'
     };
+    data ={}
+    methods = {}
+    watch = {}
+    components = {
+        indulgenceList: IndulgenceList
+    }
 }
 </script>

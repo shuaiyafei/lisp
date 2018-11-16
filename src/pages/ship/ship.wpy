@@ -2,11 +2,15 @@
 </style>
 
 <template>
-
+    <view>
+        <shipList></shipList>
+    </view>
 </template>
 
 <script>
 import wepy from 'wepy';
+import ShipList from '@/components/ship-list';
+
 
 export default class Ship extends wepy.page {
     config = {
@@ -15,5 +19,9 @@ export default class Ship extends wepy.page {
         navigationBarTitleText: '0元包邮',
         navigationBarTextStyle: '#fff'
     };
+
+    components = {
+        shipList: ShipList
+    }
 }
 </script>

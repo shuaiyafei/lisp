@@ -16,6 +16,8 @@
 ```
 cd lisp
 
+npm install
+
 wepy build --watch
 ```
 将`dist`目录放到小程序开发工具

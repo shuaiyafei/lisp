@@ -2,11 +2,14 @@
 </style>
 
 <template>
-
+    <view>
+        <freeList></freeList>
+    </view>
 </template>
 
 <script>
 import wepy from 'wepy';
+import FreeList from '@/components/ship-list';
 
 export default class Free extends wepy.page {
     config = {
@@ -15,5 +18,10 @@ export default class Free extends wepy.page {
         navigationBarTitleText: '免费福利',
         navigationBarTextStyle: '#fff'
     };
+    data = {}
+    methods = {}
+    components = {
+        freeList: FreeList
+    }
 }
 </script>
