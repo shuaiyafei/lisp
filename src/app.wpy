@@ -32,6 +32,12 @@ export default class extends wepy.app {
             'pages/quickentry/quickentry',
             'pages/newslist/newslist',
             'pages/newsdetail/newsdetail',
+            'pages/discount/discount',
+            'pages/rank/rank',
+            'pages/ship/ship',
+            'pages/free/free',
+            'pages/indulgence/indulgence',
+            'pages/bargain/bargain'
         ],
         window: {
             backgroundTextStyle: 'light',

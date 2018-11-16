@@ -1,0 +1,121 @@
+<style lang="less">
+page {
+    background: #f0f0f0;
+}
+.rank-list-option {
+    background:#fff;
+    padding:0 20px;
+}
+.rank-list-contain {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+}
+.rank-list-img {
+    height: 65px;
+    width: 85px;
+}
+.rank-list-showrank {
+    position: absolute;
+    left: -5px;
+    top: 0;
+    display: inline-block;
+    background: #bbb;
+    color: #fff;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    font-size: 12px;
+    text-align: center;
+}
+.rank-list-content {
+    width: 240px;
+}
+.rank-list-cover {
+    display: flex;
+    justify-content: space-between;
+}
+.rank-list-title {
+    font-size: 18px;
+}
+.rank-list-popular {
+    font-size: 12px;
+    background: #ff3200;
+    padding: 0 10px;
+    display: inline-block;
+    color: #fff;
+    border-radius: 8px;
+    height: 18px;
+    margin-top: 3px;
+}
+.rank-list-price {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #666;
+    margin-top: 10px;
+}
+.rank-list-desc {
+    font-size: 12px;
+    color: #ff9c38;
+    margin: 10px 0;
+    padding-bottom: 10px;
+}
+</style>
+
+<template>
+    <view class="rank-list">
+        <view class="rank-list-option" wx:for="{{rankList}}" wx:for-index="index" wx:for-item="item" wx:key="index" @tap="receiveTicket({{item.id}})">
+            <view class="rank-list-contain">
+                <image class="rank-list-img" src="{{item.src}}" />
+                <text class="rank-list-showrank">{{index+1}}</text>
+                <view class="rank-list-content">
+                    <view class="rank-list-cover">
+                        <text class="rank-list-title">{{item.title}}</text>
+                        <text class="rank-list-popular">{{item.num}}人气</text>
+                    </view>
+
+                    <!-- <view class="rank-list-score">
+                    <text>{{item.score}}</text>
+                </view> -->
+
+                    <view class="rank-list-price">
+                        <text>￥{{item.price}}/人</text>
+                        <text>{{item.distance}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="rank-list-desc">
+                <text>{{item.desc}}</text>
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import util from '@/common/js/util';
+
+export default class extends wepy.component {
+    props = {
+        rankList: {
+            type: Array,
+            default: []
+        }
+    };
+
+    watch = {};
+
+    data = {
+    };
+
+    methods = {
+        // 领取优惠券
+        receiveTicket(para) {
+            console.log(para);
+        }
+    };
+}
+</script>

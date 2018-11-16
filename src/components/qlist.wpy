@@ -64,8 +64,8 @@ export default class Qlist extends wepy.component {
     methods = {
         jumpDetail(para) {
             wepy.navigateTo({
-                url: `/pages/detail/detail?classifyId=${para}`
-            })
+                url: para
+            });
         }
     }
 }

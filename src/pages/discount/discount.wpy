@@ -1,0 +1,90 @@
+<style lang="less">
+</style>
+
+<template>
+    <view>
+        <discountBanner1 :writing.sync="writing1"></discountBanner1>
+        <discountTicket :ticketList.sync="ticketList"></discountTicket>
+        <discountBanner2 :writing.sync="writing2"></discountBanner2>
+        <discountOffer :offerList.sync="offerList"></discountOffer>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import util from '@/common/js/util';
+import DiscountBanner from '@/components/discount-banner';
+import DiscountTicket from '@/components/discount-ticket';
+import DiscountOffer from '@/components/discount-offer';
+
+export default class Discount extends wepy.page {
+    config = {
+        backgroundTextStyle: '#fff',
+        navigationBarBackgroundColor: '#599eff',
+        navigationBarTitleText: '领券中心',
+        navigationBarTextStyle: '#fff'
+    };
+
+    data = {
+        writing1: '优惠券 限时限量',
+        writing2: '超值优惠',
+        ticketList: [],
+        offerList: [],
+        currentPage: 1
+    };
+
+    components = {
+        discountBanner1: DiscountBanner,
+        discountTicket: DiscountTicket,
+        discountBanner2: DiscountBanner,
+        discountOffer: DiscountOffer
+    };
+
+    methods = {};
+
+    async loadDiscountData() {
+        const discountData = await util.ajax({
+            url: 'getDiscountInfo'
+        });
+        this.ticketList = discountData.ticketList;
+        this.offerList = discountData.offerList;
+        wx.hideLoading();
+        this.$apply();
+    }
+
+    init() {
+        wx.showLoading({
+            title: '加载中'
+        });
+        this.loadDiscountData();
+    }
+
+    onLoad() {
+        this.init();
+    }
+
+    async loadOfferList() {
+        this.offerList = this.offerList.concat(
+            (await util.ajax({
+                url: 'getDiscountInfo'
+            })).offerList
+        );
+        wx.hideLoading();
+        this.$apply();
+    }
+
+    loadMore() {
+        wx.showLoading({
+            title: '加载中'
+        });
+        this.loadOfferList();
+    }
+
+    // 下拉加载更多
+    onReachBottom() {
+        this.currentPage += 1;
+        console.log(`当前为第${this.currentPage}页`);
+        this.loadMore();
+    }
+}
+</script>

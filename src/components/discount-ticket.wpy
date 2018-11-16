@@ -1,0 +1,53 @@
+<style lang="less">
+.discount-ticket {
+    background: #ffdde3;
+    text {
+        font-size: 22px;
+        color: #000;
+        font-weight: bold;
+    }
+}
+.discount-ticket-option {
+    padding-top: 10px;
+}
+.discount-ticket-img {
+    height: 75px;
+    width: 100%;
+}
+</style>
+
+<template>
+    <view class="discount-ticket">
+        <view class="discount-ticket-option" wx:for="{{ticketList}}" wx:for-index="index" wx:for-item="item" wx:key="index" @tap="receiveTicket({{item.id}})">
+            <image class="discount-ticket-img" src="{{item.src}}" />
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import util from '@/common/js/util';
+
+
+export default class extends wepy.component {
+    props = {
+        ticketList: {
+            type: Array,
+            default: []
+        }
+    };
+
+    watch = {};
+
+    data = {
+        
+    };
+
+    methods = {
+        // 领取优惠券
+        receiveTicket(para) {
+            console.log(para);
+        }
+    };
+}
+</script>

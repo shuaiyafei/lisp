@@ -1,0 +1,19 @@
+<style lang="less">
+</style>
+
+<template>
+
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class Ship extends wepy.page {
+    config = {
+        backgroundTextStyle: '#fff',
+        navigationBarBackgroundColor: '#599eff',
+        navigationBarTitleText: '0元包邮',
+        navigationBarTextStyle: '#fff'
+    };
+}
+</script>

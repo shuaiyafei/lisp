@@ -1,0 +1,47 @@
+<!--快速入口-->
+<style lang="less">
+    .discount-banner {
+        background: #716fa2;
+        height: 50px;
+    }
+    .discount-banner text {
+        color: #fff;
+        font-size: 18px;
+        line-height: 50px;
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+    }
+</style>
+
+<template>
+    <view class="discount-banner">
+        <text>{{writing}}</text>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class extends wepy.component {
+    props = {
+        writing: {
+            type: String,
+            default: ''
+        }
+    }
+
+    data = {
+        
+    };
+
+    methods = {
+        
+    }
+    onLoad() {
+        console.log(this.writing)
+    }
+}
+
+</script>
+

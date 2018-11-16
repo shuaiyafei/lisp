@@ -1,0 +1,19 @@
+<style lang="less">
+</style>
+
+<template>
+
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class Bargain extends wepy.page {
+    config = {
+        backgroundTextStyle: '#fff',
+        navigationBarBackgroundColor: '#599eff',
+        navigationBarTitleText: '疯狂砍价',
+        navigationBarTextStyle: '#fff'
+    };
+}
+</script>

@@ -1,0 +1,119 @@
+<style lang="less">
+.discount-offer {
+   margin: 0;
+}
+.discount-offer-option {
+    padding:10px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #f0f0f0;
+}
+.discount-offer-img {
+    width: 110px;
+    height: 80px;
+}
+.discount-offer-content {
+    width: 235px;
+}
+.discount-offer-title {
+    font-size: 18px;
+    color: #333;
+}
+.discount-offer-desc {
+    font-size: 12px;
+    color: #999;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+.discount-offer-price {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.discount-offer-price text:nth-child(1) {
+    font-size: 16px;
+
+}
+.discount-offer-price text:nth-child(2) {
+    color: #000;
+    font-size: 22px;
+    font-weight: bold;
+}
+.discount-offer-price text:nth-child(3) {
+    font-size: 12px;
+    color: #999;
+    margin-left: 5px;
+}
+.discount-offer-receive {
+    position: absolute;
+    right: 10px;
+    top: -5px;
+    width: 70px;
+    height: 27px;
+    background: #c99f51;
+    line-height: 25px;
+}
+.discount-offer-receive text {
+    font-size: 13px !important;
+    text-emphasis: center;
+    width: 100%;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+}
+</style>
+
+<template>
+    <view class="discount-offer">
+        <view class="discount-offer-option" wx:for="{{offerList}}" wx:for-index="index" wx:for-item="item" wx:key="index" @tap="receiveTicket({{item.id}})">
+            <image class="discount-offer-img" src="{{item.src}}" />
+            <view class="discount-offer-content">
+                <view class="discount-offer-title">
+                    <text>{{item.title}}</text>
+                </view>
+                <view class="discount-offer-desc">
+                    <text>{{item.place}}</text>
+                    <text>{{item.desc}}</text>
+                </view>
+                <view class="discount-offer-price">
+                    <text>¥</text>
+                    <text>{{item.price}}</text>
+                    <text>{{item.priceType}}</text>
+                    <view class="discount-offer-receive">
+                        <text>马上抢</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import util from '@/common/js/util';
+
+export default class extends wepy.component {
+    props = {
+        offerList: {
+            type: Array,
+            default: []
+        }
+    };
+
+    watch = {};
+
+    data = {
+        
+    };
+
+    methods = {
+        // 领取优惠券
+        receiveTicket(para) {
+            console.log(para);
+        }
+    };
+}
+</script>

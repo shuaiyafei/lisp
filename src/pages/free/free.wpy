@@ -1,0 +1,19 @@
+<style lang="less">
+</style>
+
+<template>
+
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class Free extends wepy.page {
+    config = {
+        backgroundTextStyle: '#fff',
+        navigationBarBackgroundColor: '#599eff',
+        navigationBarTitleText: '免费福利',
+        navigationBarTextStyle: '#fff'
+    };
+}
+</script>
