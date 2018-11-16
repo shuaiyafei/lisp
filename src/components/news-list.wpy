@@ -1,0 +1,116 @@
+<style lang="less">
+.newslist-contain {
+    width: 100%;
+}
+.newslist-panel {
+    display: flex;
+    border-bottom: 1px solid #f0f0f0;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.newslist-panel-img {
+    width: 100px;
+    height: 60px;
+}
+.newslist-panel-content {
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 3%; 
+}
+.newslist-panel-desc {
+    font-size: 16px;
+    color: #333;
+    width: 240px;
+}
+.newslist-panel-detail {
+    font-size: 14px;
+    color: #999;
+    display: flex;
+    justify-content: space-between;
+}
+</style>
+
+<template>
+    <view class="newslist-contain">
+        <view class="newslist-panel" wx:for="{{newsList}}" wx:for-item="item" wx:for-index="index" wx:key="index" @tap="jumpNewsDetail({{item.articleId}})">
+            <image class="newslist-panel-img" src="{{item.src}}" />
+            <view class="newslist-panel-content">
+                <view class="newslist-panel-desc">{{item.desc}}</view>
+                <view class="newslist-panel-detail">
+                    <text>{{item.belong}}</text>
+                    <text>{{item.viewNum}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import util from '@/common/js/util';
+
+export default class extends wepy.component {
+    props = {
+        currentCheck: {
+            type: String,
+            default: 0,
+            twoWay: true,
+        },
+        currentPage: {
+            type: Number,
+            default: 1,
+        }
+    };
+
+    watch = {
+        currentCheck(v) {
+            this.init();
+        },
+        currentPage(v) {
+            this.init();
+            console.log(`当前为第${v}页`);
+        }
+    }
+
+    data = {
+        newsList: []
+    };
+
+    methods = {
+        jumpNewsDetail(articleId) {
+            wepy.navigateTo({
+                url: `/pages/newsdetail/newsdetail?articleId=${articleId}`
+            });
+        }
+    };
+
+    async loadNewslist() {
+        this.newsList = this.newsList.concat(await util.ajax({
+            url: 'getNewsList',
+            para: {
+                id: this.currentCheck,
+            }
+        }));
+        this.$apply();
+        wx.hideLoading();
+    }
+
+    init() {
+        this.loadNewslist();
+        wx.showLoading({
+            title: '加载中'
+        });
+    }
+
+    onLoad() {
+        this.init();
+    }
+
+    
+}
+</script>

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import ajax from '@/common/js/util';
+import util from '@/common/js/util';
 import quickEntryMap from '@/model/QuickEntryModel';
 import wepy from 'wepy';
 import Search from '@/components/search';
@@ -41,7 +41,9 @@ export default class Quickentry extends wepy.page {
   methods = {};
 
   async loadQuickentryData(id) {
-    const quickentryData = await ajax('getQuickentry');
+    const quickentryData = await util.ajax({
+        url: 'getQuickentry'
+    });
     var index = parseInt(id);
     this.ad = quickentryData.ads[index];
     wx.hideLoading();
