@@ -1,5 +1,10 @@
 const path = require('path');
+const app = require('./app');
+
+//请求本地接口
+app();
 var prod = process.env.NODE_ENV === 'production';
+
 
 module.exports = {
   wpyExt: '.wpy',

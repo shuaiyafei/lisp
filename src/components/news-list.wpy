@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-left: 3%; 
+    margin-left: 3%;
 }
 .newslist-panel-desc {
     font-size: 16px;
@@ -37,7 +37,7 @@
 
 <template>
     <view class="newslist-contain">
-        <view class="newslist-panel" wx:for="{{newsList}}" wx:for-item="item" wx:for-index="index" wx:key="index" @tap="jumpNewsDetail({{item.articleId}})">
+        <view class="newslist-panel" wx:for="{{newsList}}" wx:for-item="item" wx:for-index="index" wx:key="index" @tap="jumpNewsDetail({{item}})">
             <image class="newslist-panel-img" src="{{item.src}}" />
             <view class="newslist-panel-content">
                 <view class="newslist-panel-desc">{{item.desc}}</view>
@@ -59,11 +59,11 @@ export default class extends wepy.component {
         currentCheck: {
             type: String,
             default: 0,
-            twoWay: true,
+            twoWay: true
         },
         currentPage: {
             type: Number,
-            default: 1,
+            default: 1
         }
     };
 
@@ -72,36 +72,42 @@ export default class extends wepy.component {
             this.init();
         },
         currentPage(v) {
-            this.init();
+            this.init('append');
             console.log(`当前为第${v}页`);
         }
-    }
+    };
 
     data = {
         newsList: []
     };
 
     methods = {
-        jumpNewsDetail(articleId) {
+        jumpNewsDetail(para) {
             wepy.navigateTo({
-                url: `/pages/newsdetail/newsdetail?articleId=${articleId}`
+                url: `/pages/newsdetail/newsdetail?articleId=${para.id}&area_id=${para.area_id}&config_id=${para.config_id}&type=4`
             });
         }
     };
 
-    async loadNewslist() {
-        this.newsList = this.newsList.concat(await util.ajax({
+    async loadNewslist(type) {
+        const list = await util.ajax({
             url: 'getNewsList',
             para: {
-                id: this.currentCheck,
+                id: this.currentCheck
             }
-        }));
+        });
+        if (type == 'append') {
+            this.newsList = this.newsList.concat(list);
+        } else {
+            this.newsList = list;
+        }
+        
         this.$apply();
         wx.hideLoading();
     }
 
-    init() {
-        this.loadNewslist();
+    init(type) {
+        this.loadNewslist(type);
         wx.showLoading({
             title: '加载中'
         });
@@ -110,7 +116,6 @@ export default class extends wepy.component {
     onLoad() {
         this.init();
     }
-
-    
 }
 </script>
+

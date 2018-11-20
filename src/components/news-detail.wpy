@@ -16,6 +16,17 @@
     .newsdetail-desc text {
         margin-right: 20px;
     }
+    .newsdetail-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        background: #ddd;
+    }
+    .newsdetail-bottom text {
+        color: #fff;
+        font-size: 16px;
+    }
 </style>
 
 <template>
@@ -34,6 +45,10 @@
                     {{newsdetail.source}}
                 </text>
             </view>
+            <rich-text nodes="{{newsdetail.content}}"></rich-text>
+            <view class="newsdetail-bottom">
+                <text>商圈头条</text>
+            </view>
         </view>
     </view>
 </template>
@@ -50,7 +65,8 @@ export default class extends wepy.component {
 
     data = {
         newsdetail: '',
-        currentTime: ''
+        currentTime: '',
+        options: ''
     };
 
     methods = {};
@@ -62,13 +78,10 @@ export default class extends wepy.component {
             url: 'http://chi.nuomi.com/bizareatop',
             para: {
                 action: 'getArticleDetail',
-                column_id: 281103,
-                area_id: 100010000,
-                config_id: 0,
-                pa: 'nuomi',
-                type: 4,
-                origin: undefined,
-                bizfrom: 'wap_home'
+                column_id: this.options.articleId,
+                area_id: this.options.area_id,
+                type: this.options.type,
+                config_id: this.options.config_id,
             },
             isUseOrigin: false
         });
@@ -86,7 +99,8 @@ export default class extends wepy.component {
         });
     }
 
-    onLoad() {
+    onLoad(options) {
+        this.options = this.$wxpage.options;
         this.init();
     }
 }
