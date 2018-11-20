@@ -37,7 +37,9 @@ export default class extends wepy.app {
             'pages/ship/ship',
             'pages/free/free',
             'pages/indulgence/indulgence',
-            'pages/bargain/bargain'
+            'pages/bargain/bargain',
+            'pages/moviedetail/moviedetail',
+            'pages/authorize/authorize'
         ],
         window: {
             backgroundTextStyle: 'light',
@@ -100,6 +102,7 @@ export default class extends wepy.app {
         }
         wepy.getUserInfo({
             success(res) {
+                console.log(res)
                 that.globalData.userInfo = res.userInfo;
                 cb && cb(res.userInfo);
             }

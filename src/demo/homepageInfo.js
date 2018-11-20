@@ -6,11 +6,8 @@ module.exports = {
             "src": "https://ss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/f703738da9773912c2273a36f5198618367ae260.jpg",
             "url": "1"
         }, {
-            "src": "https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/8c1001e93901213f72bfdd8e59e736d12e2e95d0.jpg",
+            "src": "https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/562c11dfa9ec8a13e706fbbffa03918fa0ecc055.jpg",
             "url": "2"
-        }, {
-            "src": "https://ss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/nuomi/pic/item/f9198618367adab4bb823e1586d4b31c8701e412.jpg",
-            "url": "3"
         }],
         "recommendList": [{
             "location": "双井 ",

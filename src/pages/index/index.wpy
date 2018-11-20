@@ -89,7 +89,13 @@ export default class Index extends wepy.page {
     }
 
     onLoad() {
-        this.init();
+        if (!this.$parent.globalData.userInfo) {
+            wepy.redirectTo({
+                url: `/pages/authorize/authorize`
+            });
+        } else {
+            this.init();
+        }
     }
     // 下拉加载更多
     onReachBottom() {

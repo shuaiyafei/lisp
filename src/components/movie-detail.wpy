@@ -1,0 +1,76 @@
+<style lang="less">
+.movie-contain {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.movie-contain image {
+    width: 100%;
+    height: 560px;
+}
+.movie-header {
+    display: inline-block;
+    flex: 1;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #d0d0d0;
+    color: #f1f1f1;
+}
+</style>
+
+<template>
+    <view>
+        <view class="movie-contain">
+            <image src="{{movieDetail.src}}" />
+            <view class="movie-header">
+                <text>{{movieDetail.desc}}</text>
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import util from '@/common/js/util';
+// import WxParse from '@/common/wxParse/wxParse';
+
+export default class extends wepy.component {
+    props = {};
+
+    watch = {};
+
+    data = {
+        movieDetail: '',
+        classifyId: ''
+    };
+
+    methods = {};
+
+    async loadmovie() {
+        const result = await util.ajax({
+            url: 'getBannerInfo',
+            para: {
+                classifyId: this.classifyId
+            }
+        });
+        this.movieDetail = result[0];
+        this.$apply();
+        wx.hideLoading();
+    }
+
+    init() {
+        this.loadmovie();
+        wx.showLoading({
+            title: '加载中'
+        });
+    }
+
+    onLoad(options) {
+        this.classifyId = this.$wxpage.options.classifyId;
+        this.init();
+    }
+}
+</script>

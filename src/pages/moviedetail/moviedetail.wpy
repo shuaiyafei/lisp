@@ -1,0 +1,33 @@
+<style>
+</style>
+
+<template>
+    <view>
+        <movieDeatilInfo></movieDeatilInfo>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import util from '@/common/js/util';
+import MovieDeatilInfo from '@/components/movie-detail';
+
+export default class MovieDeatil extends wepy.page {
+    config = {
+        backgroundTextStyle: '#fff',
+        navigationBarBackgroundColor: '#599eff',
+        navigationBarTitleText: '近期上映',
+        navigationBarTextStyle: '#fff'
+    };
+
+    data = {};
+
+    methods = {
+        
+    };
+
+    components = {
+        movieDeatilInfo: MovieDeatilInfo
+    }
+}
+</script>

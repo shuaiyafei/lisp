@@ -12,9 +12,22 @@ const assign = (url, query, router) => {
         if (condition) {
             data = item.data;
         }  
+        // newslist
         if (condition && query.id) {
             // const id = query.id;
+            // 80条数据随机
             data.content = data.content.concat(data.content.splice(0, (Math.random() * 80).toFixed()));
+        }
+        // moviedetail
+        if (condition && query.classifyId) {
+            let result = [];
+            data.content.forEach(item => {
+                if (query.classifyId == item.classifyId) {
+                    result.unshift(item);
+                }
+                result.push(item);
+            });
+            data.content = result;
         }
     });
     

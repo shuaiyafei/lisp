@@ -2,7 +2,7 @@
 <style lang="less">
 .banner {
     width: 100%;
-    height: 175px;
+    height: 125px;
     padding: 10px 0;
     background: #f0f4f5;
 }
@@ -63,7 +63,7 @@ export default class Banner extends wepy.component {
     methods = {
         jumpDetail(para) {
             wepy.navigateTo({
-                url: `/pages/detail/detail?classifyId=${para}`
+                url: `/pages/moviedetail/moviedetail?classifyId=${para}`
             });
         }
     };
