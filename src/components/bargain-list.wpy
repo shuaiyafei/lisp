@@ -74,7 +74,7 @@
     text-align: center;
 }
 .bargain-tip icon {
-    font-size: 65px; 
+    font-size: 65px;
     margin-bottom: 15px;
 }
 .bargain-tip text {

@@ -1,89 +1,99 @@
 <style lang="less">
 .page {
-  background-color: white;
-  height: 100%;
+    background-color: white;
+    height: 100%;
 }
 
 .container {
-  background-color: white;
-  height: 100%;
+    background-color: white;
+    height: 100%;
 }
 </style>
 
 <template>
 
-  <view class="container">
+    <view class="container">
 
-    <userinfo :header="header"></userinfo>
+        <userinfo :header.sync="header"></userinfo>
 
-    <ad :content="adContent"></ad>
+        <ad :content="adContent"></ad>
 
-    <navigateList :list="body"></navigateList>
+        <navigateList :list="body"></navigateList>
 
-    <commonList :list="list" @onItemClickListener.user="jumpPage"></commonList>
+        <commonList :list="list" @onItemClickListener.user="jumpPage"></commonList>
 
-  </view>
+    </view>
 
 </template>
 
 <script>
-import {
-  header,
-  body,
-  adContent,
-  list
-} from '@/model/MinePageModel';
+import { header, body, adContent, list } from '@/model/MinePageModel';
 import wepy from 'wepy';
-import Header from '@/components/mine/userinfo';
-import Ad from '@/components/mine/ad';
-import NavigateList from '@/components/mine/nlist';
-import CommonList from '@/components/mine/clist';
+import Header from '@/components/userinfo';
+import Ad from '@/components/ad';
+import NavigateList from '@/components/nlist';
+import CommonList from '@/components/clist';
 
 export default class MinePage extends wepy.page {
-  config = {
-    navigationBarTitleText: '我的'
-  };
+    config = {
+        backgroundTextStyle: '#fff',
+        navigationBarBackgroundColor: '#599eff',
+        navigationBarTitleText: '我的',
+        navigationBarTextStyle: '#fff'
+    };
 
-  data = {
-    header,
-    body,
-    adContent,
-    list
-  };
+    data = {
+        header,
+        body,
+        adContent,
+        list
+    };
 
-  components = {
-    userinfo: Header,
-    ad: Ad,
-    navigateList: NavigateList,
-    commonList: CommonList
-  };
+    components = {
+        userinfo: Header,
+        ad: Ad,
+        navigateList: NavigateList,
+        commonList: CommonList
+    };
 
-  methods = {
-    jumpPage(index) {
-      console.log(index);
-      let that = this;
-      switch (index) {
-        case 0:
-          break;
-        case 1:
-          break;
-        case 2:
-          break;
-        case 3:
-          break;
-        case 4:
-          that.methods.toAboutUsPage();
-          break;
-      }
-    },
+    methods = {
+        jumpPage(index) {
+            console.log(index);
+            let that = this;
+            switch (index) {
+                case 0:
+                    wepy.navigateTo({
+                        url: '/pages/card/card'
+                    });
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    that.methods.toAboutUsPage();
+                    break;
+            }
+        },
 
-    toAboutUsPage() {
-      var link = list[4].extra;
-      var title = list[4].info;
-      wepy.navigateTo({
-        url: `../../pages/webview/webview?link=${link}&title=${title}`
-      });
+        toAboutUsPage() {
+            var link = list[4].extra;
+            var title = list[4].info;
+            wepy.navigateTo({
+                url: `../../pages/webview/webview?link=${link}&title=${title}`
+            });
+        }
+    };
+    onLoad() {
+        const userInfo = this.$parent.globalData.userInfo;
+        console.log(userInfo);
+        this.header = {
+            username: userInfo.nickName,
+            avatar: userInfo.avatarUrl
+        };
+        this.$apply();
     }
-  };
 }
 </script>

@@ -55,7 +55,7 @@ export default class Banner extends wepy.component {
             color: 'rgba(255, 255, 255, .5)',
             activeColor: '#fff',
             autoplay: true,
-            interval: '2000',
+            interval: '3000',
             circular: true
         }
     };

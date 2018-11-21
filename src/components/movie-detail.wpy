@@ -56,7 +56,11 @@ export default class extends wepy.component {
                 classifyId: this.classifyId
             }
         });
-        this.movieDetail = result[0];
+        result.forEach(item => {
+            if (item.classifyId == this.classifyId) {
+                this.movieDetail = item;
+            }
+        });
         this.$apply();
         wx.hideLoading();
     }

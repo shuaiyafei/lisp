@@ -1,0 +1,126 @@
+<style lang="less">
+.card {
+    background: #ffdde3;
+    text {
+        font-size: 22px;
+        color: #000;
+        font-weight: bold;
+    }
+}
+.card-option {
+    position: relative;
+    height: 75px;
+}
+.card-img {
+    height: 75px;
+    width: 100%;
+}
+.card-less {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 100vw;
+}
+.card-less icon {
+    font-size: 30px;
+}
+.card-less view {
+    margin-top: 10px;
+    font-size: 16px;
+}
+.card-less view text {
+    font-size: 16px;
+    color: #599eff;
+    display: inline-block;
+}
+.card-desc {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 75px;
+    background: #ffdde3;
+    line-height: 75px;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+}
+.card-desc text {
+    margin-top:8px;
+    background: #ddd;
+    height: 62px;
+    display: inline-block;
+    line-height: 62px;
+    width: 85%;
+    margin-right: 20px;
+}
+.card-contain {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-around;
+    background: #ffdde3;
+}
+.card-other {
+    font-size: 16px;
+    color: #fff;
+    background: #ddd;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+</style>
+<template>
+    <view>
+        <view wx:if="{{ticketList.length}}" class="card-contain">
+            <view class="card-option" wx:for="{{ticketList}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+                <image class="card-img" src="{{item.src}}" @tap="receiveTicket({{item}})" />
+                <view class="card-desc">
+                    <text>立即使用</text>
+                </view>
+            </view>
+            <view class="card-other">
+                <text @tap="jumpDiscount">查看其它卡卷</text>
+            </view>
+        </view>
+        <view wx:else>
+            <view class="card-less">
+                <icon class="iconfont">&#xe637;</icon>
+                <view>暂无卡卷信息
+                    <text @tap="jumpDiscount">去领取</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+<script>
+import wepy from 'wepy';
+
+export default class extends wepy.page {
+    props = {};
+
+    watch = {};
+
+    data = {
+        ticketList: ''
+    };
+
+    methods = {
+        jumpDiscount() {
+            wepy.redirectTo({
+                url: '/pages/discount/discount'
+            });
+        }
+    };
+
+    onLoad() {
+        this.ticketList = wx.getStorageSync('ticket')
+            ? wx.getStorageSync('ticket')
+            : [];
+        this.$apply();
+    }
+}
+</script>

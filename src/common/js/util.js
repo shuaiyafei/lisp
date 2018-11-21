@@ -1,6 +1,6 @@
 const API = {
-    // host: 'https://www.easy-mock.com/mock/5be0242b4148294f7206dfd0/mplisp'
-    host: 'http://127.0.0.1:8996'
+    host: 'https://www.easy-mock.com/mock/5be0242b4148294f7206dfd0/mplisp'
+    // host: 'http://127.0.0.1:8996'
 }
 
 const ajax = ({

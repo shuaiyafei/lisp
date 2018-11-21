@@ -14,12 +14,15 @@
     height: 75px;
     width: 100%;
 }
+.discount-ticket-received {
+    filter: grayscale(100%);
+}
 </style>
 
 <template>
     <view class="discount-ticket">
-        <view class="discount-ticket-option" wx:for="{{ticketList}}" wx:for-index="index" wx:for-item="item" wx:key="index" @tap="receiveTicket({{item.id}})">
-            <image class="discount-ticket-img" src="{{item.src}}" />
+        <view class="discount-ticket-option" wx:for="{{ticketList}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+            <image class="discount-ticket-img" src="{{item.src}}" @tap="receiveTicket({{item}})" />
         </view>
     </view>
 </template>
@@ -27,7 +30,6 @@
 <script>
 import wepy from 'wepy';
 import util from '@/common/js/util';
-
 
 export default class extends wepy.component {
     props = {
@@ -40,14 +42,30 @@ export default class extends wepy.component {
     watch = {};
 
     data = {
-        
+        result: []
     };
 
     methods = {
-        // 领取优惠券
+        //领取优惠券
         receiveTicket(para) {
-            console.log(para);
+            let ticketList = wx.getStorageSync('ticket') ? wx.getStorageSync('ticket') : [];
+            let result = [];
+            ticketList.forEach(item => {
+                result.push(item.id);
+            });
+            this.result = result;
+            if (this.result.includes(para.id)) {
+                util.toast('请勿重复领取');
+            } else {
+                ticketList.push(para);
+                wx.setStorageSync('ticket', ticketList);
+                util.toast('领取成功');
+            }
         }
     };
+
+    onLoad() {
+
+    }
 }
 </script>

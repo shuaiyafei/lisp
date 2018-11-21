@@ -57,10 +57,11 @@ export default class Authorize extends wepy.page {
             try {
                 const userInfo = e.detail.userInfo;
                 this.$parent.globalData.userInfo = userInfo;
+                wepy.setStorageSync('userInfo', userInfo);
                 this.avatarUrl = userInfo.avatarUrl;
                 this.name = userInfo.nickName;
                 setTimeout(() => {
-                    wepy.redirectTo({
+                    wepy.switchTab({
                         url: '/pages/index/index'
                     });
                 }, 1000);

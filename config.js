@@ -19,16 +19,16 @@ const assign = (url, query, router) => {
             data.content = data.content.concat(data.content.splice(0, (Math.random() * 80).toFixed()));
         }
         // moviedetail
-        if (condition && query.classifyId) {
-            let result = [];
-            data.content.forEach(item => {
-                if (query.classifyId == item.classifyId) {
-                    result.unshift(item);
-                }
-                result.push(item);
-            });
-            data.content = result;
-        }
+        // if (condition && query.classifyId) {
+        //     let result = [];
+        //     data.content.forEach(item => {
+        //         if (query.classifyId == item.classifyId) {
+        //             result.unshift(item);
+        //         }
+        //         result.push(item);
+        //     });
+        //     data.content = result;
+        // }
     });
     
     return data;

@@ -15,7 +15,7 @@ import quickEntryMap from '@/model/QuickEntryModel';
 import wepy from 'wepy';
 import Search from '@/components/search';
 import News from '@/components/news';
-import Ad from '@/components/mine/ad';
+import Ad from '@/components/ad';
 
 export default class Quickentry extends wepy.page {
   data = {

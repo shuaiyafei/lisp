@@ -2,27 +2,29 @@
 </style>
 
 <template>
-  <web-view src="{{url}}"></web-view>
+    <web-view src="{{url}}"></web-view>
 </template>
 
 <script>
 import wepy from 'wepy';
 
 export default class Webview extends wepy.page {
-  onLoad(options) {
-    var that = this;
-    console.log(options);
-    that.setData({
-      url: options.link
-    });
-    wx.setNavigationBarTitle({
-      title: options.title
-    });
-  }
+    config = {
+        backgroundTextStyle: '#fff',
+        navigationBarBackgroundColor: '#599eff',
+        navigationBarTitleText: '模板',
+        navigationBarTextStyle: '#fff'
+    };
 
-  config = {
-    navigationBarTitleText: 'web-view'
-  };
+    onLoad(options) {
+        var that = this;
+        that.setData({
+            url: options.link
+        });
+        wx.setNavigationBarTitle({
+            title: options.title
+        });
+    }
 }
 </script>
 

@@ -1,11 +1,11 @@
 <style lang="less">
 @font-face {
   font-family: 'iconfont';  /* project id 904044 */
-  src: url('//at.alicdn.com/t/font_904044_phfju8rv7lj.eot');
-  src: url('//at.alicdn.com/t/font_904044_phfju8rv7lj.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_904044_phfju8rv7lj.woff') format('woff'),
-  url('//at.alicdn.com/t/font_904044_phfju8rv7lj.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_904044_phfju8rv7lj.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_904044_s21q4s9ol5r.eot');
+  src: url('//at.alicdn.com/t/font_904044_s21q4s9ol5r.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_904044_s21q4s9ol5r.woff') format('woff'),
+  url('//at.alicdn.com/t/font_904044_s21q4s9ol5r.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_904044_s21q4s9ol5r.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -28,7 +28,6 @@ export default class extends wepy.app {
             'pages/index/index',
             'pages/mine/mine',
             'pages/webview/webview',
-            'pages/detail/detail',
             'pages/quickentry/quickentry',
             'pages/newslist/newslist',
             'pages/newsdetail/newsdetail',
@@ -39,7 +38,8 @@ export default class extends wepy.app {
             'pages/indulgence/indulgence',
             'pages/bargain/bargain',
             'pages/moviedetail/moviedetail',
-            'pages/authorize/authorize'
+            'pages/authorize/authorize',
+            'pages/card/card',
         ],
         window: {
             backgroundTextStyle: 'light',
@@ -70,7 +70,7 @@ export default class extends wepy.app {
     };
 
     globalData = {
-        userInfo: null
+        userInfo: ''
     };
 
     constructor() {
@@ -80,6 +80,7 @@ export default class extends wepy.app {
 
     onLaunch() {
         this.testAsync();
+        this.getUserInfo();
     }
 
     sleep(s) {
@@ -102,7 +103,6 @@ export default class extends wepy.app {
         }
         wepy.getUserInfo({
             success(res) {
-                console.log(res)
                 that.globalData.userInfo = res.userInfo;
                 cb && cb(res.userInfo);
             }
